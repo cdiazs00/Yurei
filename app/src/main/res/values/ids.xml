@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="enemy_button1" type="id" />
+    <item name="enemy_button2" type="id" />
+    <item name="enemy_button3" type="id" />
+</resources>
