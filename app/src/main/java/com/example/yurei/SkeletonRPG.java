@@ -223,6 +223,23 @@ public class SkeletonRPG extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 int damage = 0;
                 applyDamageToEnemy(selectedEnemy, damage);
+                switch (spriteTurn) {
+                    case 1:
+                        ally1.setBackgroundResource(R.drawable.sora);
+                        ally2.setBackgroundResource(R.drawable.cloud);
+                        ally3.setBackgroundResource(R.drawable.sephiroth);
+                        break;
+                    case 2:
+                        ally1.setBackgroundResource(R.drawable.sora);
+                        ally2.setBackgroundResource(R.drawable.cloud);
+                        ally3.setBackgroundResource(R.drawable.sephiroth);
+                        break;
+                    case 3:
+                        ally1.setBackgroundResource(R.drawable.sora);
+                        ally2.setBackgroundResource(R.drawable.cloud);
+                        ally3.setBackgroundResource(R.drawable.sephiroth);
+                        break;
+                }
             }
 
             @Override
