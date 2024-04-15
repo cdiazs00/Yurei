@@ -10,13 +10,12 @@ public class Allies {
     private int DEF;
     private List<String> habilidades;
 
-    public Allies(String nombre, int PV, int PM, int ATK, int DEF, List<String> habilidades) {
+    public Allies(String nombre, int PV, int PM, int ATK, int DEF) {
         this.nombre = nombre;
         this.PV = PV;
         this.PM = PM;
         this.ATK = ATK;
         this.DEF = DEF;
-        this.habilidades = habilidades;
     }
 
     public String getNombre() {
@@ -57,13 +56,5 @@ public class Allies {
 
     public void setDEF(int DEF) {
         this.DEF = DEF;
-    }
-
-    public List<String> getHabilidades() {
-        return habilidades;
-    }
-
-    public void setHabilidades(List<String> habilidades) {
-        this.habilidades = habilidades;
     }
 }

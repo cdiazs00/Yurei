@@ -20,11 +20,10 @@ import java.util.List;
 
 public class SkeletonRPG extends AppCompatActivity {
 
-    private View ally1, ally2, ally3;
+    private View ally1, ally2, ally3, MagicMenu;
     private AnimatedImageDrawable animationDrawable;
     private int spriteTurn = 1;
     ImageView gif1, gif2, gif3;
-    ImageView marker1, marker2, marker3;
     private List<Allies> AllyList;
     private List<Enemies> EnemyList;
     private TextView ally_stats;
@@ -42,17 +41,11 @@ public class SkeletonRPG extends AppCompatActivity {
         ally2 = findViewById(R.id.ally2);
         ally3 = findViewById(R.id.ally3);
 
+        MagicMenu = findViewById(R.id.magicmenu);
+
         gif1 = findViewById(R.id.gif1);
         gif2 = findViewById(R.id.gif2);
         gif3 = findViewById(R.id.gif3);
-
-        marker1 = findViewById(R.id.marker1);
-        marker2 = findViewById(R.id.marker2);
-        marker3 = findViewById(R.id.marker3);
-
-        marker1.setVisibility(View.INVISIBLE);
-        marker2.setVisibility(View.INVISIBLE);
-        marker3.setVisibility(View.INVISIBLE);
 
         Button attackButton = findViewById(R.id.attack);
         Button magicButton = findViewById(R.id.magic);
@@ -69,19 +62,15 @@ public class SkeletonRPG extends AppCompatActivity {
         AllyList = new ArrayList<>();
         EnemyList = new ArrayList<>();
 
-        List<String> skillsSora = new ArrayList<>();
-        List<String> skillsCloud = new ArrayList<>();
-        List<String> skillsSephiroth = new ArrayList<>();
-
         List<String> skillsSombra = new ArrayList<>();
         skillsSombra.add("Zarpazo");
         List<String> skillsHechicero = new ArrayList<>();
         skillsHechicero.add("Bola de fuego");
         skillsHechicero.add("Rayo");
 
-        AllyList.add(new Allies("Sora", 100, 75, 10, 5, skillsSora));
-        AllyList.add(new Allies("Cloud", 150, 60, 15, 7, skillsCloud));
-        AllyList.add(new Allies("Sephiroth", 200, 100, 20, 10, skillsSephiroth));
+        AllyList.add(new Allies("Sora", 100, 75, 10, 5));
+        AllyList.add(new Allies("Cloud", 150, 60, 15, 7));
+        AllyList.add(new Allies("Sephiroth", 200, 100, 20, 10));
 
         EnemyList.add(new Enemies("Sombra", 50, skillsSombra));
         EnemyList.add(new Enemies("Hechicero", 100, skillsHechicero));
@@ -94,9 +83,14 @@ public class SkeletonRPG extends AppCompatActivity {
             enemyButton1.setVisibility(View.VISIBLE);
             enemyButton2.setVisibility(View.VISIBLE);
             enemyButton3.setVisibility(View.VISIBLE);
-            marker1.setVisibility(View.VISIBLE);
-            marker2.setVisibility(View.VISIBLE);
-            marker3.setVisibility(View.VISIBLE);
+            MagicMenu.setVisibility(View.INVISIBLE);
+        });
+
+        magicButton.setOnClickListener(v -> {
+            enemyButton1.setVisibility(View.INVISIBLE);
+            enemyButton2.setVisibility(View.INVISIBLE);
+            enemyButton3.setVisibility(View.INVISIBLE);
+            MagicMenu.setVisibility(View.VISIBLE);
         });
 
         enemyButton1.setOnClickListener(v -> {
@@ -105,9 +99,6 @@ public class SkeletonRPG extends AppCompatActivity {
             enemyButton1.setVisibility(View.INVISIBLE);
             enemyButton2.setVisibility(View.INVISIBLE);
             enemyButton3.setVisibility(View.INVISIBLE);
-            marker1.setVisibility(View.INVISIBLE);
-            marker2.setVisibility(View.INVISIBLE);
-            marker3.setVisibility(View.INVISIBLE);
         });
 
         enemyButton2.setOnClickListener(v -> {
@@ -116,9 +107,6 @@ public class SkeletonRPG extends AppCompatActivity {
             enemyButton1.setVisibility(View.INVISIBLE);
             enemyButton2.setVisibility(View.INVISIBLE);
             enemyButton3.setVisibility(View.INVISIBLE);
-            marker1.setVisibility(View.INVISIBLE);
-            marker2.setVisibility(View.INVISIBLE);
-            marker3.setVisibility(View.INVISIBLE);
         });
 
         enemyButton3.setOnClickListener(v -> {
@@ -127,9 +115,6 @@ public class SkeletonRPG extends AppCompatActivity {
             enemyButton1.setVisibility(View.INVISIBLE);
             enemyButton2.setVisibility(View.INVISIBLE);
             enemyButton3.setVisibility(View.INVISIBLE);
-            marker1.setVisibility(View.INVISIBLE);
-            marker2.setVisibility(View.INVISIBLE);
-            marker3.setVisibility(View.INVISIBLE);
         });
     }
 
@@ -221,8 +206,24 @@ public class SkeletonRPG extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                int damage = 0;
-                applyDamageToEnemy(selectedEnemy, damage);
+                applyDamageToEnemy(selectedEnemy);
+                switch (spriteTurn) {
+                    case 1:
+                        ally1.setBackgroundResource(R.drawable.sora);
+                        ally2.setBackgroundResource(R.drawable.cloud);
+                        ally3.setBackgroundResource(R.drawable.sephiroth);
+                        break;
+                    case 2:
+                        ally1.setBackgroundResource(R.drawable.sora);
+                        ally2.setBackgroundResource(R.drawable.cloud);
+                        ally3.setBackgroundResource(R.drawable.sephiroth);
+                        break;
+                    case 3:
+                        ally1.setBackgroundResource(R.drawable.sora);
+                        ally2.setBackgroundResource(R.drawable.cloud);
+                        ally3.setBackgroundResource(R.drawable.sephiroth);
+                        break;
+                }
             }
 
             @Override
@@ -243,7 +244,7 @@ public class SkeletonRPG extends AppCompatActivity {
         handler.postDelayed(() -> hideGif(gifImageView), 500);
     }
 
-    private void applyDamageToEnemy(Enemies enemy, int damage) {
+    private void applyDamageToEnemy(Enemies enemy) {
         if (enemy != null) {
             int attackerATK = 0;
             switch (spriteTurn) {
@@ -257,20 +258,23 @@ public class SkeletonRPG extends AppCompatActivity {
                     attackerATK = AllyList.get(1).getATK();
                     break;
             }
-            damage = attackerATK;
+            int damage = attackerATK;
 
             enemy.setPV(enemy.getPV() - damage);
             if (enemy.getPV() <= 0) {
-                EnemyList.remove(enemy);
-                switch (EnemyList.size()) {
+                enemy.setPV(0);
+                switch (EnemyList.indexOf(enemy)) {
                     case 0:
-                        findViewById(R.id.enemy3).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.enemy1).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.enemy_button1).setEnabled(false);
                         break;
                     case 1:
                         findViewById(R.id.enemy2).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.enemy_button2).setEnabled(false);
                         break;
                     case 2:
-                        findViewById(R.id.enemy1).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.enemy3).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.enemy_button3).setEnabled(false);
                         break;
                 }
             }
