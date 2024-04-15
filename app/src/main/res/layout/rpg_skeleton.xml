@@ -180,6 +180,15 @@
         app:layout_constraintBottom_toTopOf="@id/battlemenu"
         tools:ignore="MissingConstraints,NotSibling" />
 
+    <HorizontalScrollView
+        android:id="@+id/magicmenu"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/menu_batalla"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/battlemenu"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
     <View
         android:id="@+id/borderline"
         android:layout_width="0.01dp"
@@ -304,38 +313,5 @@
         app:layout_constraintTop_toBottomOf="@id/enemy2"
         app:layout_constraintBottom_toTopOf="@id/battlemenu"
         tools:ignore="ContentDescription,ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/marker1"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/triangulo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/enemy1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/marker2"
-        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/marker2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/triangulo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/enemy2"
-        app:layout_constraintTop_toBottomOf="@id/marker1"
-        app:layout_constraintBottom_toTopOf="@id/marker3"
-        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/marker3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/triangulo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/enemy3"
-        app:layout_constraintTop_toBottomOf="@id/marker2"
-        app:layout_constraintBottom_toTopOf="@id/enemy_stats"
-        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
