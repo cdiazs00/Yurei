@@ -4,24 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/interior_coche"
     android:layout_height="match_parent"
-    tools:context=".SkeletonDialogues">
+    tools:context=".Prologue">
 
-    <View
-        android:id="@+id/blueView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#6aa0f7"
-        tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/escenas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/coche"
+        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
 
     <View
         android:id="@+id/sprite1"
         android:layout_width="50dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:background="#ae00ed"
-        app:layout_constraintBottom_toTopOf="@id/blueView"
+        app:layout_constraintBottom_toBottomOf="@id/blueView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/sprite2"
         tools:ignore="MissingConstraints" />
@@ -29,22 +27,32 @@
     <View
         android:id="@+id/sprite2"
         android:layout_width="50dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:background="#ae00ed"
-        app:layout_constraintBottom_toTopOf="@id/blueView"
+        app:layout_constraintBottom_toBottomOf="@id/blueView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/sprite1"
         tools:ignore="MissingConstraints" />
 
+    <View
+        android:id="@+id/blueView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#7005e4fc"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/text"
-        android:layout_width="500dp"
+        android:layout_width="650dp"
         android:layout_height="100dp"
         android:text="Diálogo 1"
-        android:textSize="25sp"
-        app:layout_constraintTop_toTopOf="@+id/blueView"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/blueView"
-        tools:ignore="HardcodedText,MissingConstraints,VisualLintBounds" />
+        app:layout_constraintTop_toTopOf="@+id/blueView"
+        tools:ignore="HardcodedText,MissingConstraints,VisualLintBounds,TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_next"
