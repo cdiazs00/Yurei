@@ -1,8 +1,57 @@
-"Vaya con el tiempo, hacía mucho que no llovía de esta manera, es como si el cielo se fuera a caer. A ver si dicen cuando va a amainar"
+"Vaya con el tiempo, hacía mucho que no llovía de esta manera, es como si el cielo se fuera a caer. A ver si dicen cuando va a amainar."
 (Enciendes la radio)
 RADIO: ¡Buenas! Aquí Teletiempo.ftv. Hoy en el pronóstico para España, el sur experimentará un calor intenso para esta época de primavera, especialmente en Andalucía,
 con Sevilla alcanzando los 31ºC. Por ello, recomendamos hidratarse abundantemente para hacer frente a esta variación climática en el sur. Por otro lado, el resto del país
 disfrutará de un día despejado, sin nubes de tormenta a la vista.
-CRISTINA: ¿Cómo? Pero qué dice el tipo del tiempo si aquí esta cayendo la de Dios, parece ser que está equivocado, y si no es así, ¿Cómo es que aquí llueve tanto?
-Me parece de lo más extraño.
+"¿Cómo? Pero qué dice el tipo del tiempo si aquí esta cayendo la de Dios, parece ser que está equivocado, y si no es así, ¿Cómo es que aquí llueve tanto?
+Me parece de lo más extraño."
 VELÁNIMAS
+"Por fin hemos llegado, vamos rumbo a la casa de los Hernández, ellos eran viejos amigos de mis padres, me quedaré con ellos un tiempo hasta que empiece
+la universidad."
+CASA DE LOS HERNÁNDEZ
+*Toc toc toc*
+???: ¿Quién es?
+CRISTINA: Soy yo, Cristina.
+???: Oh, por fin has llegado. Pasa hija pasa.
+"La señora Hernández, ha pasado mucho desde la última vez que nos vimos."
+SRA. HERNÁNDEZ: Bienvenida Cristina, ¿que tal el viaje?
+CRISTINA: Ha sido un poco largo y la lluvia un poco molesta. ¿Dónde están Luis y María?
+SRA. HERNÁNDEZ: En sus cuartos.
+CRISTINA: ¿Están durmiendo?
+SRA. HERNÁNDEZ: No creo, Luis estará con el ordenador y María con el móvil.
+CRISTINA: Iré a saludarlos.
+SRA. HERNÁNDEZ: De acuerdo y de paso le dices a María que te enseñe dónde esta tu cuarto.
+CRISTINA: Vale.
+"¿A quién deberia ir a ver primero?"
+
+*Toc toc*
+LUIS: ¿Quién es?
+CRISTINA: Soy yo, Cristina.
+LUIS: Pasa.
+"Mi amigo de la infancia Luis, ha cambiado tanto que casi no lo reconozco"
+LUIS: Cuánto tiempo sin vernos, ¿Cómo te ha ido?
+CRISTINA: Bien, ¿Que tal tú?
+LUIS: Aquí ocupado con el tema de la universidad.
+CRISTINA: ¿Tú a que te has apuntado?
+LUIS: A esgrima por supuesto, ya sabes que siempre me ha gustado empuñar una espada.
+CRISTINA: ¿Y tu hermana?
+LUIS: A ella se le dan mejor las tareas intelectuales, así que escogió alquimia.
+CRISTINA: Bueno, tu y yo estaremos en el mismo curso así que... ¿Puedo contar contigo?
+LUIS: Claro, te ayudaré en lo que pueda.
+CRISTINA: Gracias.
+LUIS: En fin, me voy a saludar a tu hermana.
+
+*Toc toc*
+MARÍA: Quién es?
+CRISTINA: Soy yo, Cristina.
+MARÍA: Adelante.
+"Mi amiga de la infancia María, ha cambiado tanto que casi no la reconozco"
+MARÍA: Hola Cristina, por fin has llegado, ¿Que tal el viaje?
+CRISTINA: Bien la verdad, aunque lluvia ha sido molesta.
+MARÍA: Ya, hoy ha llovido mucho, la verdad.
+Cristina: Espero que mañana haga mejor tiempo.
+Maria. Seguro que vienes cansada quieres que te muestre donde esta tu cuarto o quieres hacer otra cosa.
+
+Luis. Algo mas? Eleccion: 1. Cuantas asignaturas puedes matricularte? 3. Nada mas.
+1
+Luis: Tres predeterminadas que son pociones,encantamientos y espiritismo aunque espiritismo solo se hace apartir de finales del segundo trimestre. Y luego puedes elegir  una especialidad que son esgrima, hechiceria o especialista.

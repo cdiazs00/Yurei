@@ -1,7 +1,6 @@
 package com.example.yurei;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -29,6 +28,7 @@ public class Prologue extends AppCompatActivity {
     private Button option2Button;
     private Button changeDialogueButton;
     private ImageView backgroundImageView;
+    private View sprite1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,10 @@ public class Prologue extends AppCompatActivity {
         changeDialogueButton = findViewById(R.id.button_next);
         option1Button = findViewById(R.id.button_option1);
         option2Button = findViewById(R.id.button_option2);
+        sprite1 = findViewById(R.id.sprite1);
         option1Button.setVisibility(View.GONE);
         option2Button.setVisibility(View.GONE);
+        sprite1.setVisibility(View.GONE);
         changeDialogueButton.setVisibility(View.INVISIBLE);
         backgroundImageView = findViewById(R.id.escenas);
 
@@ -58,15 +60,16 @@ public class Prologue extends AppCompatActivity {
         });
 
         option1Button.setOnClickListener(v -> {
-            Intent intent = new Intent(this, SkeletonRPG.class);
-            startActivity(intent);
+            option1Button.setVisibility(View.INVISIBLE);
+            option2Button.setVisibility(View.INVISIBLE);
+            dialogueIndex = 26;
+            animateText();
         });
         option2Button.setOnClickListener(v -> {
             if (!animationRunning) {
                 option1Button.setVisibility(View.INVISIBLE);
                 option2Button.setVisibility(View.INVISIBLE);
-                charIndex = 0;
-                animationRunning = true;
+                dialogueIndex = 43;
                 animateText();
             }
         });
@@ -80,6 +83,17 @@ public class Prologue extends AppCompatActivity {
             @Override
             public void run() {
                 if (dialogueIndex < dialogues.length) {
+                    if (dialogueIndex == 7) {
+                        setBackground(R.drawable.velanimas_entrada);
+                    }
+                    if (dialogueIndex == 10) {
+                        setBackground(R.drawable.casa_exterior);
+                    }
+                    if (dialogueIndex == 15) {
+                        setBackground(R.drawable.sala_estar);
+                        sprite1.setVisibility(View.VISIBLE);
+                    }
+
                     String fullText = dialogues[dialogueIndex];
                     if (charIndex <= fullText.length()) {
                         String partialText = fullText.substring(0, charIndex);
@@ -90,17 +104,14 @@ public class Prologue extends AppCompatActivity {
                         charIndex = 0;
                         dialogueIndex++;
                         animationRunning = false;
-                        if (dialogueIndex < dialogues.length && dialogueIndex != 20) {
+                        if (dialogueIndex < dialogues.length && dialogueIndex != 25) {
                             changeDialogueButton.setVisibility(View.VISIBLE);
                         } else {
                             changeDialogueButton.setVisibility(View.INVISIBLE);
-                            if (dialogueIndex == 20) {
+                            if (dialogueIndex == 25) {
                                 option1Button.setVisibility(View.VISIBLE);
                                 option2Button.setVisibility(View.VISIBLE);
                             }
-                        }
-                        if (dialogueIndex == 8) {
-                            setBackground(R.drawable.velanimas_entrada);
                         }
                     }
                 }

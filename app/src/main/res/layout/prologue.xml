@@ -21,17 +21,7 @@
         android:background="#ae00ed"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sprite2"
-        tools:ignore="MissingConstraints" />
-
-    <View
-        android:id="@+id/sprite2"
-        android:layout_width="50dp"
-        android:layout_height="300dp"
-        android:background="#ae00ed"
-        app:layout_constraintBottom_toBottomOf="@id/blueView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sprite1"
+        app:layout_constraintEnd_toStartOf="@id/button_option1"
         tools:ignore="MissingConstraints" />
 
     <View
@@ -60,8 +50,8 @@
         android:layout_height="wrap_content"
         android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
-        app:layout_constraintEnd_toStartOf="@id/button_option2"
-        app:layout_constraintStart_toEndOf="@id/button_option1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="24dp"
         app:layout_constraintTop_toTopOf="@+id/blueView"
         tools:ignore="HardcodedText" />
 
@@ -70,12 +60,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:gravity="center"
-        android:text="Luchar"
+        android:text="Luis"
         app:layout_constraintBottom_toTopOf="@id/button_option2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sprite2"
         tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -83,12 +72,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:gravity="center"
-        android:text="No luchar"
+        android:text="María"
         app:layout_constraintBottom_toTopOf="@id/blueView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sprite2"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
