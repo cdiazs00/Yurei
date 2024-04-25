@@ -28,8 +28,9 @@ public class Prologue extends AppCompatActivity {
     private Button option2Button;
     private Button changeDialogueButton;
     private ImageView backgroundImageView;
-    private View sprite1;
+    private View sprite1, sprite2, sprite3;
 
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +40,14 @@ public class Prologue extends AppCompatActivity {
         changeDialogueButton = findViewById(R.id.button_next);
         option1Button = findViewById(R.id.button_option1);
         option2Button = findViewById(R.id.button_option2);
-        sprite1 = findViewById(R.id.sprite1);
+        sprite1 = findViewById(R.id.sra_hernandez);
+        sprite2 = findViewById(R.id.luis);
+        sprite3 = findViewById(R.id.maria);
         option1Button.setVisibility(View.GONE);
         option2Button.setVisibility(View.GONE);
         sprite1.setVisibility(View.GONE);
+        sprite2.setVisibility(View.GONE);
+        sprite3.setVisibility(View.GONE);
         changeDialogueButton.setVisibility(View.INVISIBLE);
         backgroundImageView = findViewById(R.id.escenas);
 
@@ -80,6 +85,7 @@ public class Prologue extends AppCompatActivity {
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void run() {
                 if (dialogueIndex < dialogues.length) {
@@ -92,6 +98,20 @@ public class Prologue extends AppCompatActivity {
                     if (dialogueIndex == 15) {
                         setBackground(R.drawable.sala_estar);
                         sprite1.setVisibility(View.VISIBLE);
+                    }
+                    if (dialogueIndex == 24){
+                        setBackground(R.drawable.habitaciones);
+                        sprite1.setVisibility(View.INVISIBLE);
+                        option1Button.setText("Luis");
+                        option2Button.setText("María");
+                    }
+                    if (dialogueIndex == 30){
+                        setBackground(R.drawable.habitacion_luis);
+                        sprite2.setVisibility(View.VISIBLE);
+                    }
+                    if (dialogueIndex == 47){
+                        setBackground(R.drawable.habitacion_maria);
+                        sprite3.setVisibility(View.VISIBLE);
                     }
 
                     String fullText = dialogues[dialogueIndex];

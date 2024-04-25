@@ -49,9 +49,6 @@ MARÍA: Adelante.
 MARÍA: Hola Cristina, por fin has llegado, ¿Que tal el viaje?
 CRISTINA: Bien la verdad, aunque lluvia ha sido molesta.
 MARÍA: Ya, hoy ha llovido mucho, la verdad.
-Cristina: Espero que mañana haga mejor tiempo.
-Maria. Seguro que vienes cansada quieres que te muestre donde esta tu cuarto o quieres hacer otra cosa.
-
-Luis. Algo mas? Eleccion: 1. Cuantas asignaturas puedes matricularte? 3. Nada mas.
-1
-Luis: Tres predeterminadas que son pociones,encantamientos y espiritismo aunque espiritismo solo se hace apartir de finales del segundo trimestre. Y luego puedes elegir  una especialidad que son esgrima, hechiceria o especialista.
+CRISTINA: Espero que mañana haga mejor tiempo.
+CRISTINA: Por cierto, tu madre me ha dicho que me enseñes mi habitación.
+MARÍA: Oh, pues nada, sígueme y te muestro donde está todo.
