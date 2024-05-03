@@ -19,9 +19,8 @@ CRISTINA: Ha sido un poco largo y la lluvia un poco molesta. ¿Dónde están Lui
 SRA. HERNÁNDEZ: En sus cuartos.
 CRISTINA: ¿Están durmiendo?
 SRA. HERNÁNDEZ: No creo, Luis estará con el ordenador y María con el móvil.
-CRISTINA: Iré a saludarlos.
-SRA. HERNÁNDEZ: De acuerdo y de paso le dices a María que te enseñe dónde esta tu cuarto.
-CRISTINA: Vale.
+CRISTINA: Iré a saludarlos, por cierto, gracias por su hospitalidad.
+SRA. HERNÁNDEZ: De nada niña.
 "¿A quién deberia ir a ver primero?"
 
 *Toc toc*
@@ -38,9 +37,7 @@ CRISTINA: ¿Y tu hermana?
 LUIS: A ella se le dan mejor las tareas intelectuales, así que escogió alquimia.
 CRISTINA: Bueno, tu y yo estaremos en el mismo curso así que... ¿Puedo contar contigo?
 LUIS: Claro, te ayudaré en lo que pueda.
-CRISTINA: Gracias.
-LUIS: En fin, me voy a saludar a tu hermana.
-
+CRISTINA: Gracias. En fin, me voy a saludar a tu hermana.
 *Toc toc*
 MARÍA: Quién es?
 CRISTINA: Soy yo, Cristina.
@@ -51,4 +48,6 @@ CRISTINA: Bien la verdad, aunque lluvia ha sido molesta.
 MARÍA: Ya, hoy ha llovido mucho, la verdad.
 CRISTINA: Espero que mañana haga mejor tiempo.
 CRISTINA: Por cierto, tu madre me ha dicho que me enseñes mi habitación.
-MARÍA: Oh, pues nada, sígueme y te muestro donde está todo.
+MARÍA: Oh, de acuerdo, cuando estés lista, avisame y te enseño donde está todo.
+"¿Voy a saludar a Luis o voy a mi habitación?"
+He decidido dirigirme a mi habitación.

@@ -63,21 +63,6 @@ public class Prologue extends AppCompatActivity {
                 animateText();
             }
         });
-
-        option1Button.setOnClickListener(v -> {
-            option1Button.setVisibility(View.INVISIBLE);
-            option2Button.setVisibility(View.INVISIBLE);
-            dialogueIndex = 26;
-            animateText();
-        });
-        option2Button.setOnClickListener(v -> {
-            if (!animationRunning) {
-                option1Button.setVisibility(View.INVISIBLE);
-                option2Button.setVisibility(View.INVISIBLE);
-                dialogueIndex = 43;
-                animateText();
-            }
-        });
     }
 
     private void animateText() {
@@ -99,19 +84,24 @@ public class Prologue extends AppCompatActivity {
                         setBackground(R.drawable.sala_estar);
                         sprite1.setVisibility(View.VISIBLE);
                     }
-                    if (dialogueIndex == 24){
+                    if (dialogueIndex == 23){
                         setBackground(R.drawable.habitaciones);
                         sprite1.setVisibility(View.INVISIBLE);
                         option1Button.setText("Luis");
                         option2Button.setText("María");
                     }
-                    if (dialogueIndex == 30){
+                    if (dialogueIndex == 29){
                         setBackground(R.drawable.habitacion_luis);
                         sprite2.setVisibility(View.VISIBLE);
                     }
-                    if (dialogueIndex == 47){
+                    if (dialogueIndex == 44){
                         setBackground(R.drawable.habitacion_maria);
                         sprite3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (dialogueIndex == 51){
+                        setBackground(R.drawable.habitaciones);
+                        sprite3.setVisibility(View.INVISIBLE);
                     }
 
                     String fullText = dialogues[dialogueIndex];
@@ -124,15 +114,52 @@ public class Prologue extends AppCompatActivity {
                         charIndex = 0;
                         dialogueIndex++;
                         animationRunning = false;
-                        if (dialogueIndex < dialogues.length && dialogueIndex != 25) {
+                        if (dialogueIndex < dialogues.length && dialogueIndex != 24 && dialogueIndex != 52) {
                             changeDialogueButton.setVisibility(View.VISIBLE);
                         } else {
                             changeDialogueButton.setVisibility(View.INVISIBLE);
-                            if (dialogueIndex == 25) {
+                            if (dialogueIndex == 24) {
                                 option1Button.setVisibility(View.VISIBLE);
                                 option2Button.setVisibility(View.VISIBLE);
                             }
+                            if (dialogueIndex == 52){
+                                option1Button.setVisibility(View.VISIBLE);
+                                option2Button.setVisibility(View.VISIBLE);
+                                option1Button.setText("Saludar a Luis");
+                                option2Button.setText("Ir a mi habitación");
+                            }
                         }
+                    }
+                    if (dialogueIndex == 23) {
+                        option1Button.setOnClickListener(v -> {
+                            option1Button.setVisibility(View.INVISIBLE);
+                            option2Button.setVisibility(View.INVISIBLE);
+                            dialogueIndex = 25;
+                            animateText();
+                        });
+                        option2Button.setOnClickListener(v -> {
+                            if (!animationRunning) {
+                                option1Button.setVisibility(View.INVISIBLE);
+                                option2Button.setVisibility(View.INVISIBLE);
+                                dialogueIndex = 40;
+                                animateText();
+                            }
+                        });
+                    } else if (dialogueIndex == 52) {
+                        option1Button.setOnClickListener(v -> {
+                            option1Button.setVisibility(View.INVISIBLE);
+                            option2Button.setVisibility(View.INVISIBLE);
+                            dialogueIndex = 25;
+                            animateText();
+                        });
+                        option2Button.setOnClickListener(v -> {
+                            if (!animationRunning) {
+                                option1Button.setVisibility(View.INVISIBLE);
+                                option2Button.setVisibility(View.INVISIBLE);
+                                dialogueIndex = 52;
+                                animateText();
+                            }
+                        });
                     }
                 }
             }
