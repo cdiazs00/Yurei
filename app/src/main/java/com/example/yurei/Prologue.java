@@ -1,6 +1,7 @@
 package com.example.yurei;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -24,11 +25,9 @@ public class Prologue extends AppCompatActivity {
     private int dialogueIndex = 0;
     private int charIndex = 0;
     private boolean animationRunning = false;
-    private Button option1Button;
-    private Button option2Button;
-    private Button changeDialogueButton;
+    private Button option1Button, option2Button, changeDialogueButton, menuButton, exitButton, saveButton, exitGameButton, inventoryButton, exitInventoryButton;
     private ImageView backgroundImageView;
-    private View sprite1, sprite2, sprite3;
+    private View sprite1, sprite2, sprite3, menu, statsMenu;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -40,14 +39,33 @@ public class Prologue extends AppCompatActivity {
         changeDialogueButton = findViewById(R.id.button_next);
         option1Button = findViewById(R.id.button_option1);
         option2Button = findViewById(R.id.button_option2);
+        menuButton = findViewById(R.id.button_menu);
+        exitButton = findViewById(R.id.button_exit_menu);
+        saveButton = findViewById(R.id.save_button);
+        exitGameButton = findViewById(R.id.button_exit_game);
+        inventoryButton = findViewById(R.id.button_inventory);
+        exitInventoryButton = findViewById(R.id.button_exit_inventory);
+
         sprite1 = findViewById(R.id.sra_hernandez);
         sprite2 = findViewById(R.id.luis);
         sprite3 = findViewById(R.id.maria);
+        menu = findViewById(R.id.menu);
+        statsMenu = findViewById(R.id.stats_menu);
+
         option1Button.setVisibility(View.GONE);
         option2Button.setVisibility(View.GONE);
+        menuButton.setVisibility(View.VISIBLE);
+        exitButton.setVisibility(View.INVISIBLE);
+        saveButton.setVisibility(View.INVISIBLE);
+        exitGameButton.setVisibility(View.INVISIBLE);
+        inventoryButton.setVisibility(View.INVISIBLE);
+        exitInventoryButton.setVisibility(View.INVISIBLE);
+
         sprite1.setVisibility(View.GONE);
         sprite2.setVisibility(View.GONE);
         sprite3.setVisibility(View.GONE);
+        menu.setVisibility(View.GONE);
+        statsMenu.setVisibility(View.GONE);
         changeDialogueButton.setVisibility(View.INVISIBLE);
         backgroundImageView = findViewById(R.id.escenas);
 
@@ -62,6 +80,10 @@ public class Prologue extends AppCompatActivity {
                 animationRunning = true;
                 animateText();
             }
+        });
+        exitGameButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainMenu.class);
+            startActivity(intent);
         });
     }
 
@@ -161,6 +183,56 @@ public class Prologue extends AppCompatActivity {
                             }
                         });
                     }
+                    menuButton.setOnClickListener(v -> {
+                        menu.setVisibility(View.VISIBLE);
+                        statsMenu.setVisibility(View.VISIBLE);
+                        menuButton.setVisibility(View.INVISIBLE);
+                        exitButton.setVisibility(View.VISIBLE);
+                        saveButton.setVisibility(View.VISIBLE);
+                        exitGameButton.setVisibility(View.VISIBLE);
+                        inventoryButton.setVisibility(View.VISIBLE);
+                        changeDialogueButton.setClickable(false);
+                        option1Button.setClickable(false);
+                        option2Button.setClickable(false);
+                    });
+                    exitButton.setOnClickListener(v -> {
+                        menu.setVisibility(View.INVISIBLE);
+                        statsMenu.setVisibility(View.INVISIBLE);
+                        menuButton.setVisibility(View.VISIBLE);
+                        exitButton.setVisibility(View.INVISIBLE);
+                        saveButton.setVisibility(View.INVISIBLE);
+                        exitGameButton.setVisibility(View.INVISIBLE);
+                        inventoryButton.setVisibility(View.INVISIBLE);
+                        changeDialogueButton.setClickable(true);
+                        option1Button.setClickable(true);
+                        option2Button.setClickable(true);
+                        inventoryButton.setClickable(true);
+                    });
+                    inventoryButton.setOnClickListener(v -> {
+                        inventoryButton.setVisibility(View.INVISIBLE);
+                        exitInventoryButton.setVisibility(View.VISIBLE);
+                        statsMenu.setVisibility(View.INVISIBLE);
+                        menuButton.setVisibility(View.INVISIBLE);
+                        saveButton.setVisibility(View.INVISIBLE);
+                        exitGameButton.setVisibility(View.INVISIBLE);
+                        exitButton.setVisibility(View.INVISIBLE);
+                        changeDialogueButton.setClickable(false);
+                        option1Button.setClickable(false);
+                        option2Button.setClickable(false);
+                        menuButton.setClickable(false);
+                    });
+                    exitInventoryButton.setOnClickListener(v -> {
+                        inventoryButton.setVisibility(View.VISIBLE);
+                        exitInventoryButton.setVisibility(View.INVISIBLE);
+                        exitButton.setVisibility(View.VISIBLE);
+                        statsMenu.setVisibility(View.VISIBLE);
+                        saveButton.setVisibility(View.VISIBLE);
+                        exitGameButton.setVisibility(View.VISIBLE);
+                        changeDialogueButton.setClickable(false);
+                        option1Button.setClickable(false);
+                        option2Button.setClickable(false);
+                        menuButton.setClickable(true);
+                    });
                 }
             }
         }, delayMillis);
