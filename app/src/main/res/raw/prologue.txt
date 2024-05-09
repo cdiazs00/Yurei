@@ -6,7 +6,7 @@ disfrutará de un día despejado, sin nubes de tormenta a la vista.
 "¿Cómo? Pero qué dice el tipo del tiempo si aquí esta cayendo la de Dios, parece ser que está equivocado, y si no es así, ¿Cómo es que aquí llueve tanto?
 Me parece de lo más extraño."
 VELÁNIMAS
-"Por fin hemos llegado, vamos rumbo a la casa de los Hernández, ellos eran viejos amigos de mis padres, me quedaré con ellos un tiempo hasta que empiece
+"Por fin he llegado, ahora rumbo a la casa de los Hernández, ellos eran viejos amigos de mis padres, me quedaré con ellos un tiempo hasta que empiece
 la universidad."
 CASA DE LOS HERNÁNDEZ
 *Toc toc toc*
@@ -50,4 +50,8 @@ CRISTINA: Espero que mañana haga mejor tiempo.
 CRISTINA: Por cierto, tu madre me ha dicho que me enseñes mi habitación.
 MARÍA: Oh, de acuerdo, cuando estés lista, avisame y te enseño donde está todo.
 "¿Voy a saludar a Luis o voy a mi habitación?"
-He decidido dirigirme a mi habitación.
+
+CRISTINA: Primero voy a saludar a tu hermano.
+MARÍA: Vale, aquí estaré.
+"He decidido ir a mi habitación"
+CRISTINA: Venga, muestrame el camino.

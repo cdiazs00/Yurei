@@ -10,9 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +26,7 @@ public class Prologue extends AppCompatActivity {
     private Button option1Button, option2Button, changeDialogueButton, menuButton, exitButton, saveButton, exitGameButton, inventoryButton, exitInventoryButton;
     private ImageView backgroundImageView;
     private View sprite1, sprite2, sprite3, menu, statsMenu;
+    private int Counter = 0;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -112,18 +111,18 @@ public class Prologue extends AppCompatActivity {
                         option1Button.setText("Luis");
                         option2Button.setText("María");
                     }
+                    if (dialogueIndex == 25 || dialogueIndex == 40){
+                        setBackground(R.drawable.habitaciones);
+                        sprite2.setVisibility(View.INVISIBLE);
+                        sprite3.setVisibility(View.INVISIBLE);
+                    }
                     if (dialogueIndex == 29){
                         setBackground(R.drawable.habitacion_luis);
                         sprite2.setVisibility(View.VISIBLE);
                     }
-                    if (dialogueIndex == 44){
+                    if (dialogueIndex == 44 || dialogueIndex == 55){
                         setBackground(R.drawable.habitacion_maria);
                         sprite3.setVisibility(View.VISIBLE);
-                    }
-
-                    if (dialogueIndex == 51){
-                        setBackground(R.drawable.habitaciones);
-                        sprite3.setVisibility(View.INVISIBLE);
                     }
 
                     String fullText = dialogues[dialogueIndex];
@@ -157,6 +156,7 @@ public class Prologue extends AppCompatActivity {
                             option1Button.setVisibility(View.INVISIBLE);
                             option2Button.setVisibility(View.INVISIBLE);
                             dialogueIndex = 25;
+                            Counter++;
                             animateText();
                         });
                         option2Button.setOnClickListener(v -> {
@@ -167,12 +167,31 @@ public class Prologue extends AppCompatActivity {
                                 animateText();
                             }
                         });
-                    } else if (dialogueIndex == 52) {
+                    } if (dialogueIndex == 50 && Counter == 1){
+                        dialogueIndex = 56;
+                    } if(dialogueIndex == 39 && Counter == 0){
+                        dialogueIndex = 55;
+                        Counter++;
+                    }
+                    if (dialogueIndex == 52) {
                         option1Button.setOnClickListener(v -> {
                             option1Button.setVisibility(View.INVISIBLE);
                             option2Button.setVisibility(View.INVISIBLE);
-                            dialogueIndex = 25;
+                            dialogueIndex = 53;
                             animateText();
+                        });
+                        changeDialogueButton.setOnClickListener(v -> {
+                            if (dialogueIndex == 55 && Counter == 0) {
+                                dialogueIndex = 25;
+                                animateText();
+                            } else {
+                                if (!animationRunning) {
+                                    changeDialogueButton.setVisibility(View.INVISIBLE);
+                                    charIndex = 0;
+                                    animationRunning = true;
+                                    animateText();
+                                }
+                            }
                         });
                         option2Button.setOnClickListener(v -> {
                             if (!animationRunning) {
