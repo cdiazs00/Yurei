@@ -1,7 +1,9 @@
 package com.example.yurei;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,7 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -80,9 +84,26 @@ public class Prologue extends AppCompatActivity {
                 animateText();
             }
         });
+        saveButton.setOnClickListener(v -> saveGameProgress());
+
+        final Intent[] intent = {getIntent()};
+        int dialogueIndex = intent[0].getIntExtra("dialogueIndex", 0);
+        int charIndex = intent[0].getIntExtra("charIndex", 0);
+        String currentDialogue = intent[0].getStringExtra("currentDialogue");
+        if (dialogueIndex == 0 && charIndex == 0 && currentDialogue == null) {
+            SharedPreferences sharedPreferences = getSharedPreferences("GameProgress", Context.MODE_PRIVATE);
+            dialogueIndex = sharedPreferences.getInt("dialogueIndex", 0);
+            charIndex = sharedPreferences.getInt("charIndex", 0);
+            currentDialogue = sharedPreferences.getString("currentDialogue", "");
+        }
+
+        this.dialogueIndex = dialogueIndex;
+        this.charIndex = charIndex;
+        textView.setText(currentDialogue);
+
         exitGameButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainMenu.class);
-            startActivity(intent);
+            intent[0] = new Intent(this, MainMenu.class);
+            startActivity(intent[0]);
         });
     }
 
@@ -261,6 +282,16 @@ public class Prologue extends AppCompatActivity {
         @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = getResources().getDrawable(resId);
         backgroundImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         backgroundImageView.setImageDrawable(drawable);
+    }
+
+    private void saveGameProgress() {
+        SharedPreferences sharedPreferences = getSharedPreferences("GameProgress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("dialogueIndex", dialogueIndex);
+        editor.putInt("charIndex", charIndex);
+        editor.putString("currentDialogue", textView.getText().toString());
+        editor.apply();
+        Toast.makeText(this, "Progreso guardado", Toast.LENGTH_SHORT).show();
     }
 
     private String[] readDialoguesFromCSV(int resourceId) {
