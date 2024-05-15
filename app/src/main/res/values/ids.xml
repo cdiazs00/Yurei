@@ -5,4 +5,5 @@
     <item name="enemy_button3" type="id" />
     <item name="menu" type="id" />
     <item name="stats_menu" type="id" />
+    <item name="transition" type="id" />
 </resources>

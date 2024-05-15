@@ -22,7 +22,7 @@ import java.io.InputStreamReader;
 
 public class Prologue extends AppCompatActivity {
 
-    private TextView textView;
+    private TextView textView, screen;
     private String[] dialogues;
     private int dialogueIndex = 0;
     private int charIndex = 0;
@@ -39,6 +39,7 @@ public class Prologue extends AppCompatActivity {
         setContentView(R.layout.prologue);
 
         textView = findViewById(R.id.text);
+        screen = findViewById(R.id.transition);
         changeDialogueButton = findViewById(R.id.button_next);
         option1Button = findViewById(R.id.button_option1);
         option2Button = findViewById(R.id.button_option2);
@@ -63,6 +64,7 @@ public class Prologue extends AppCompatActivity {
         exitGameButton.setVisibility(View.INVISIBLE);
         inventoryButton.setVisibility(View.INVISIBLE);
         exitInventoryButton.setVisibility(View.INVISIBLE);
+        screen.setVisibility(View.INVISIBLE);
 
         sprite1.setVisibility(View.GONE);
         sprite2.setVisibility(View.GONE);
@@ -100,6 +102,7 @@ public class Prologue extends AppCompatActivity {
         this.dialogueIndex = dialogueIndex;
         this.charIndex = charIndex;
         textView.setText(currentDialogue);
+        setBackgroundForDialogue(dialogueIndex);
 
         exitGameButton.setOnClickListener(v -> {
             intent[0] = new Intent(this, MainMenu.class);
@@ -109,6 +112,7 @@ public class Prologue extends AppCompatActivity {
 
     private void animateText() {
         final int delayMillis = 1;
+        final int screenVisibleTimeMillis = 3000;
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -144,6 +148,27 @@ public class Prologue extends AppCompatActivity {
                     if (dialogueIndex == 44 || dialogueIndex == 55){
                         setBackground(R.drawable.habitacion_maria);
                         sprite3.setVisibility(View.VISIBLE);
+                    }
+                    if (dialogueIndex == 57){
+                        setBackground(R.drawable.habitacion_invitado);
+                        sprite2.setVisibility(View.INVISIBLE);
+                        sprite3.setVisibility(View.VISIBLE);
+                    }
+                    if (dialogueIndex == 63){
+                        setBackground(R.drawable.darkness);
+                        screen.setVisibility(View.VISIBLE);
+                        sprite3.setVisibility(View.INVISIBLE);
+
+                        new Handler().postDelayed(() -> screen.setVisibility(View.INVISIBLE), screenVisibleTimeMillis);
+                    }
+                    if (dialogueIndex == 68){
+                        setBackground(R.drawable.luz);
+                    }
+                    if (dialogueIndex == 70){
+                        setBackground(R.drawable.luz_cerca);
+                    }
+                    if (dialogueIndex == 83){
+                        setBackground(R.drawable.habitacion_invitado);
                     }
 
                     String fullText = dialogues[dialogueIndex];
@@ -218,7 +243,7 @@ public class Prologue extends AppCompatActivity {
                             if (!animationRunning) {
                                 option1Button.setVisibility(View.INVISIBLE);
                                 option2Button.setVisibility(View.INVISIBLE);
-                                dialogueIndex = 52;
+                                dialogueIndex = 55;
                                 animateText();
                             }
                         });
@@ -282,6 +307,57 @@ public class Prologue extends AppCompatActivity {
         @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = getResources().getDrawable(resId);
         backgroundImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         backgroundImageView.setImageDrawable(drawable);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setBackgroundForDialogue(int dialogueIndex) {
+        switch (dialogueIndex) {
+            case 8, 9, 10 -> setBackground(R.drawable.velanimas_entrada);
+            case 11, 12, 13, 14, 15 -> setBackground(R.drawable.casa_exterior);
+            case 16, 17, 18, 19, 20, 21, 22, 23 -> {
+                setBackground(R.drawable.sala_estar);
+                sprite1.setVisibility(View.VISIBLE);
+            }
+            case 24 -> {
+                setBackground(R.drawable.habitaciones);
+                sprite1.setVisibility(View.INVISIBLE);
+                option1Button.setText("Luis");
+                option2Button.setText("María");
+            }
+            case 26, 27, 28, 29, 41, 42, 43, 44 -> {
+                setBackground(R.drawable.habitaciones);
+                sprite2.setVisibility(View.INVISIBLE);
+                sprite3.setVisibility(View.INVISIBLE);
+            }
+            case 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 -> {
+                setBackground(R.drawable.habitacion_luis);
+                sprite2.setVisibility(View.VISIBLE);
+            }
+            case 45, 46, 47, 48, 49, 50, 51, 52, 56, 57 -> {
+                setBackground(R.drawable.habitacion_maria);
+                sprite3.setVisibility(View.VISIBLE);
+            }
+            case 58, 59, 60, 61, 62, 63 -> {
+                setBackground(R.drawable.habitacion_invitado);
+                sprite2.setVisibility(View.INVISIBLE);
+                sprite3.setVisibility(View.VISIBLE);
+            }
+            case 64 -> {
+                final int screenVisibleTimeMillis = 3000;
+                setBackground(R.drawable.darkness);
+                screen.setVisibility(View.VISIBLE);
+                sprite3.setVisibility(View.INVISIBLE);
+                new Handler().postDelayed(() -> screen.setVisibility(View.INVISIBLE), screenVisibleTimeMillis);
+            }
+            case 65, 66, 67, 68 -> {
+                setBackground(R.drawable.darkness);
+                sprite3.setVisibility(View.INVISIBLE);
+            }
+            case 69, 70 -> setBackground(R.drawable.luz);
+            case 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 -> setBackground(R.drawable.luz_cerca);
+            case 84 -> setBackground(R.drawable.habitacion_invitado);
+            default -> setBackground(R.drawable.coche);
+        }
     }
 
     private void saveGameProgress() {

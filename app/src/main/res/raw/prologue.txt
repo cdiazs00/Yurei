@@ -10,9 +10,9 @@ VELÁNIMAS
 la universidad."
 CASA DE LOS HERNÁNDEZ
 *Toc toc toc*
-???: ¿Quién es?
+VOZ DE MUJER: ¿Quién es?
 CRISTINA: Soy yo, Cristina.
-???: Oh, por fin has llegado. Pasa hija pasa.
+VOZ DE MUJER: Oh, por fin has llegado. Pasa hija pasa.
 "La señora Hernández, ha pasado mucho desde la última vez que nos vimos."
 SRA. HERNÁNDEZ: Bienvenida Cristina, ¿que tal el viaje?
 CRISTINA: Ha sido un poco largo y la lluvia un poco molesta. ¿Dónde están Luis y María?
@@ -54,4 +54,31 @@ MARÍA: Oh, de acuerdo, cuando estés lista, avisame y te enseño donde está to
 CRISTINA: Primero voy a saludar a tu hermano.
 MARÍA: Vale, aquí estaré.
 "He decidido ir a mi habitación"
-CRISTINA: Venga, muestrame el camino.
+CRISTINA: Venga, muéstrame el camino.
+MARÍA: Bueno, ¿que te parece?
+CRISTINA: Parece bastante cómodo.
+MARÍA: Bueno, pues que descanses.
+CRISTINA: Gracias, hasta mañana.
+MARÍA: De acuerdo, mañana cuando despiertes busca a mi hermano para que te lleve a la universidad y te lo explique todo.
+CRISTINA: De acuerdo.
+???
+"¿Dónde estoy, estoy despierta o es un sueño?"
+VOZ INFANTIL: Cris..., ...tina.
+CRISTINA: ¿Quién anda ahí?
+VOZ INFANTIL: Cristina, ven.
+(Al girarte, ves una luz brillante a lo lejos)
+VOZ INFANTIL: Sigue la luz, Cristina.
+(Avanzas hacia la luz)
+CRISTINA: ¿Quién... qué eres?
+VOZ INFANTIL: Pronto la verdad se mostrará.
+Cristina:¿Que verdad?
+VOZ INFANTIL: La verdad de tu linaje.
+AIDEN: Soy Aiden tu espíritu contratado.
+CRISTINA: ¿Espíritu contratado, de que estás hablando? No entiendo nada.
+AIDEN: Nos reuniremos pronto, hasta entonces, mantente a salvo.
+CRISTINA: Espera, ¿A salvo de qué?
+AIDEN: Los acontecimientos ya se han puesto en marcha.
+"¿Espíritu, acontecimientos, linaje, de que va todo esto?"
+AIDEN: Adiós, Cristina.
+CRISTINA: ¡Espera!
+(Te despiertas sobresaltada)

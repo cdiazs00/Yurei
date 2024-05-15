@@ -25,7 +25,7 @@ public class MainMenu extends AppCompatActivity {
 
             if (dialogueIndex != -1 && charIndex != -1) {
                 Intent intent = new Intent(this, Prologue.class);
-                intent.putExtra("dialogueIndex", dialogueIndex);
+                intent.putExtra("dialogueIndex", dialogueIndex - 1);
                 intent.putExtra("charIndex", charIndex);
                 startActivity(intent);
             } else {
