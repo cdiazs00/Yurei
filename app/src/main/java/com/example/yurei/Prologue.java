@@ -27,9 +27,10 @@ public class Prologue extends AppCompatActivity {
     private int dialogueIndex = 0;
     private int charIndex = 0;
     private boolean animationRunning = false;
-    private Button option1Button, option2Button, changeDialogueButton, menuButton, exitButton, saveButton, exitGameButton, inventoryButton, exitInventoryButton;
-    private ImageView backgroundImageView;
-    private View sprite1, sprite2, sprite3, menu, statsMenu;
+    private Button option1Button, option2Button, changeDialogueButton, menuButton, exitButton, saveButton, exitGameButton, inventoryButton,
+            exitInventoryButton, mapButton;
+    private ImageView backgroundImageView, map;
+    private View sprite1, sprite2, sprite3, menu, statsMenu, object;
     private int Counter = 0;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -49,12 +50,15 @@ public class Prologue extends AppCompatActivity {
         exitGameButton = findViewById(R.id.button_exit_game);
         inventoryButton = findViewById(R.id.button_inventory);
         exitInventoryButton = findViewById(R.id.button_exit_inventory);
+        mapButton = findViewById(R.id.map_button);
+        map = findViewById(R.id.map);
 
         sprite1 = findViewById(R.id.sra_hernandez);
         sprite2 = findViewById(R.id.luis);
         sprite3 = findViewById(R.id.maria);
         menu = findViewById(R.id.menu);
         statsMenu = findViewById(R.id.stats_menu);
+        object = findViewById(R.id.objeto);
 
         option1Button.setVisibility(View.GONE);
         option2Button.setVisibility(View.GONE);
@@ -64,6 +68,8 @@ public class Prologue extends AppCompatActivity {
         exitGameButton.setVisibility(View.INVISIBLE);
         inventoryButton.setVisibility(View.INVISIBLE);
         exitInventoryButton.setVisibility(View.INVISIBLE);
+        mapButton.setVisibility(View.INVISIBLE);
+        map.setVisibility(ImageView.INVISIBLE);
         screen.setVisibility(View.INVISIBLE);
 
         sprite1.setVisibility(View.GONE);
@@ -71,6 +77,7 @@ public class Prologue extends AppCompatActivity {
         sprite3.setVisibility(View.GONE);
         menu.setVisibility(View.GONE);
         statsMenu.setVisibility(View.GONE);
+        object.setVisibility(View.GONE);
         changeDialogueButton.setVisibility(View.INVISIBLE);
         backgroundImageView = findViewById(R.id.escenas);
 
@@ -126,7 +133,7 @@ public class Prologue extends AppCompatActivity {
                     if (dialogueIndex == 10) {
                         setBackground(R.drawable.casa_exterior);
                     }
-                    if (dialogueIndex == 15) {
+                    if (dialogueIndex == 15 || dialogueIndex == 85) {
                         setBackground(R.drawable.sala_estar);
                         sprite1.setVisibility(View.VISIBLE);
                     }
@@ -169,6 +176,19 @@ public class Prologue extends AppCompatActivity {
                     }
                     if (dialogueIndex == 83){
                         setBackground(R.drawable.habitacion_invitado);
+                    }
+                    if (dialogueIndex == 92){
+                        setBackground(R.drawable.cocina);
+                        sprite2.setVisibility(View.VISIBLE);
+                    }
+                    if (dialogueIndex == 96){
+                        setBackground(R.drawable.jardin);
+                    }
+                    if (dialogueIndex == 97){
+                        object.setVisibility(View.VISIBLE);
+                    }
+                    if (dialogueIndex == 98){
+                        object.setVisibility(View.INVISIBLE);
                     }
 
                     String fullText = dialogues[dialogueIndex];
@@ -256,6 +276,7 @@ public class Prologue extends AppCompatActivity {
                         saveButton.setVisibility(View.VISIBLE);
                         exitGameButton.setVisibility(View.VISIBLE);
                         inventoryButton.setVisibility(View.VISIBLE);
+                        mapButton.setVisibility(View.VISIBLE);
                         changeDialogueButton.setClickable(false);
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
@@ -268,6 +289,7 @@ public class Prologue extends AppCompatActivity {
                         saveButton.setVisibility(View.INVISIBLE);
                         exitGameButton.setVisibility(View.INVISIBLE);
                         inventoryButton.setVisibility(View.INVISIBLE);
+                        mapButton.setVisibility(View.INVISIBLE);
                         changeDialogueButton.setClickable(true);
                         option1Button.setClickable(true);
                         option2Button.setClickable(true);
@@ -297,7 +319,7 @@ public class Prologue extends AppCompatActivity {
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
                         menuButton.setClickable(true);
-                    });
+                    });mapButton.setOnClickListener(v -> map.setVisibility(ImageView.VISIBLE));
                 }
             }
         }, delayMillis);
@@ -314,7 +336,7 @@ public class Prologue extends AppCompatActivity {
         switch (dialogueIndex) {
             case 8, 9, 10 -> setBackground(R.drawable.velanimas_entrada);
             case 11, 12, 13, 14, 15 -> setBackground(R.drawable.casa_exterior);
-            case 16, 17, 18, 19, 20, 21, 22, 23 -> {
+            case 16, 17, 18, 19, 20, 21, 22, 23, 86, 87, 88, 89, 90, 91, 92 -> {
                 setBackground(R.drawable.sala_estar);
                 sprite1.setVisibility(View.VISIBLE);
             }
@@ -355,7 +377,17 @@ public class Prologue extends AppCompatActivity {
             }
             case 69, 70 -> setBackground(R.drawable.luz);
             case 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 -> setBackground(R.drawable.luz_cerca);
-            case 84 -> setBackground(R.drawable.habitacion_invitado);
+            case 84, 85 -> setBackground(R.drawable.habitacion_invitado);
+            case 93, 94, 95, 96 -> {
+                setBackground(R.drawable.cocina);
+                sprite2.setVisibility(View.VISIBLE);
+            }
+            case 97, 99, 100, 101, 102, 103, 104 -> {
+                setBackground(R.drawable.jardin);
+                sprite2.setVisibility(View.VISIBLE);
+            }
+            case 98 -> object.setVisibility(View.VISIBLE);
+
             default -> setBackground(R.drawable.coche);
         }
     }

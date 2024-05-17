@@ -82,3 +82,25 @@ AIDEN: Los acontecimientos ya se han puesto en marcha.
 AIDEN: Adiós, Cristina.
 CRISTINA: ¡Espera!
 (Te despiertas sobresaltada)
+(Cuando te tranquilizas, decides dirigirte al salón principal)
+SRA. HERNÁNDEZ: Buenos dias Cristina, ¿Qué tal has dormido?
+CRISTINA: Hola señora Hernández, bien aunque he tenido un sueño muy extraño.
+SRA. HERNÁNDEZ: A lo mejor fueron los nervios por el comienzo de las clases en una nueva universidad.
+"Creo que será mejor no hablarle a nadie del sueño"
+CRISTINA: Puede que sea eso, ¿Sabes donde está Luis?
+SRA. HERNÁNDEZ: Si, está en la cocina.
+CRISTINA: Gracias, nos vemos luego.
+CRISTINA: Buenos dias.
+LUIS: Buenos dias Cristina ¿Lista para tu primer dia en la universidad?
+CRISTINA: Claro que si, por cierto ¿de que querias hablarme?
+LUIS: Ven, sígueme.
+LUIS: Antes de nada, me gustaría darte esto. Considéralo un regalo de bienvenida.
+(Has obtenido: Vial cristalizado)
+LUIS: Eso es un Vial cristalizado, una pócima mágica que se rellena automáticamente, son de uso individual, pero debido a una regla mágica, sus efectos se comparten
+entre miembros del grupo. Esta pócima restaurará un poco tu Puntos de Vida (PV) y Puntos de Magia (PM), con esto no tendrás problema a la hora de enfrentarte a tus
+enemigos.
+(El vial se rellenará despues de 8 turnos o al empezar una nueva batalla)
+(Puedes conseguir semillas cristalizadas para aumentar el número de usos y ramas de purificación para aumentar el maximo de PV y PM restaurados)
+CRISTINA: Gracias, seguro que me será útil.
+LUIS: Aún es temprano ¿Que te parece si vamos a practicar un poco?
+CRISTINA: Claro, muestra el camino.

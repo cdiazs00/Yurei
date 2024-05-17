@@ -107,7 +107,17 @@
         android:text="Menú"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <View
+        android:id="@id/objeto"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/vial"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@id/menu"
@@ -116,6 +126,23 @@
         android:background="#90d6a51e"
         android:elevation="2dp"
         tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/map_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mapa"
+        app:layout_constraintBottom_toTopOf="@+id/stats_menu"
+        app:layout_constraintStart_toStartOf="@+id/stats_menu"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mapa_yurei"
+        android:elevation="3dp"
+        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
 
     <View
         android:id="@id/stats_menu"
@@ -148,28 +175,28 @@
         android:id="@+id/save_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="Guardar Partida"
-        android:layout_marginStart="15dp"
-        app:layout_constraintTop_toTopOf="@id/menu"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/menu"
         app:layout_constraintEnd_toStartOf="@id/stats_menu"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/menu"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_exit_game"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="Salir de la partida"
-        android:layout_marginStart="15dp"
-        app:layout_constraintTop_toBottomOf="@id/save_button"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/stats_menu"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/save_button"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_exit_menu"
@@ -177,23 +204,23 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:gravity="center"
-        android:text="EXIT"
-        app:layout_constraintTop_toTopOf="@id/menu"
+        android:text="Salir"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="@id/menu"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck,TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_inventory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="Inventario"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/save_button"
         app:layout_constraintEnd_toStartOf="@id/stats_menu"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_exit_inventory"
@@ -202,8 +229,9 @@
         android:clickable="true"
         android:gravity="center"
         android:text="Salir"
+        android:elevation="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="DuplicateClickableBoundsCheck,HardcodedText,KeyboardInaccessibleWidget,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+        tools:ignore="DuplicateClickableBoundsCheck,HardcodedText,KeyboardInaccessibleWidget,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

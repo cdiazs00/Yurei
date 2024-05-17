@@ -6,4 +6,5 @@
     <item name="menu" type="id" />
     <item name="stats_menu" type="id" />
     <item name="transition" type="id" />
+    <item name="objeto" type="id" />
 </resources>
