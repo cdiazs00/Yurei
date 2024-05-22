@@ -193,7 +193,20 @@
         android:background="@drawable/menu_batalla"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/battlemenu"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/fireball"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:text="Bola de fuego"
+            android:textColor="@color/white"
+            android:background="#0d72b5"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            tools:ignore="HardcodedText" />
+
+    </HorizontalScrollView>
 
     <View
         android:id="@+id/borderline"

@@ -104,3 +104,5 @@ enemigos.
 CRISTINA: Gracias, seguro que me será útil.
 LUIS: Aún es temprano ¿Que te parece si vamos a practicar un poco?
 CRISTINA: Claro, muestra el camino.
+LUIS: Bueno, hemos llegado: el Bosque de los Ruidos.
+LUIS: Venga, desenfunda tu arma. Veamos de que estás hecha.

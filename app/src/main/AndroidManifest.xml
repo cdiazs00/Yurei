@@ -43,6 +43,12 @@
             android:screenOrientation="landscape"
             android:exported="true" />
 
+        <activity
+            android:name=".Prologue_Combat1"
+            android:theme="@style/Theme.Yurei.NoActionBar"
+            android:screenOrientation="landscape"
+            android:exported="true" />
+
     </application>
 
 </manifest>

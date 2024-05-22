@@ -28,7 +28,7 @@ public class Prologue extends AppCompatActivity {
     private int charIndex = 0;
     private boolean animationRunning = false;
     private Button option1Button, option2Button, changeDialogueButton, menuButton, exitButton, saveButton, exitGameButton, inventoryButton,
-            exitInventoryButton, mapButton;
+            exitInventoryButton, mapButton, combatButton;
     private ImageView backgroundImageView, map;
     private View sprite1, sprite2, sprite3, menu, statsMenu, object;
     private int Counter = 0;
@@ -51,8 +51,8 @@ public class Prologue extends AppCompatActivity {
         inventoryButton = findViewById(R.id.button_inventory);
         exitInventoryButton = findViewById(R.id.button_exit_inventory);
         mapButton = findViewById(R.id.map_button);
+        combatButton = findViewById(R.id.button_combat);
         map = findViewById(R.id.map);
-
         sprite1 = findViewById(R.id.sra_hernandez);
         sprite2 = findViewById(R.id.luis);
         sprite3 = findViewById(R.id.maria);
@@ -60,27 +60,27 @@ public class Prologue extends AppCompatActivity {
         statsMenu = findViewById(R.id.stats_menu);
         object = findViewById(R.id.objeto);
 
-        option1Button.setVisibility(View.GONE);
-        option2Button.setVisibility(View.GONE);
         menuButton.setVisibility(View.VISIBLE);
+        option1Button.setVisibility(View.INVISIBLE);
+        option2Button.setVisibility(View.INVISIBLE);
         exitButton.setVisibility(View.INVISIBLE);
         saveButton.setVisibility(View.INVISIBLE);
         exitGameButton.setVisibility(View.INVISIBLE);
         inventoryButton.setVisibility(View.INVISIBLE);
         exitInventoryButton.setVisibility(View.INVISIBLE);
         mapButton.setVisibility(View.INVISIBLE);
+        combatButton.setVisibility(View.INVISIBLE);
         map.setVisibility(ImageView.INVISIBLE);
         screen.setVisibility(View.INVISIBLE);
-
-        sprite1.setVisibility(View.GONE);
-        sprite2.setVisibility(View.GONE);
-        sprite3.setVisibility(View.GONE);
-        menu.setVisibility(View.GONE);
-        statsMenu.setVisibility(View.GONE);
-        object.setVisibility(View.GONE);
+        sprite1.setVisibility(View.INVISIBLE);
+        sprite2.setVisibility(View.INVISIBLE);
+        sprite3.setVisibility(View.INVISIBLE);
+        menu.setVisibility(View.INVISIBLE);
+        statsMenu.setVisibility(View.INVISIBLE);
+        object.setVisibility(View.INVISIBLE);
         changeDialogueButton.setVisibility(View.INVISIBLE);
-        backgroundImageView = findViewById(R.id.escenas);
 
+        backgroundImageView = findViewById(R.id.escenas);
         dialogues = readDialoguesFromCSV(R.raw.prologue);
 
         animateText();
@@ -123,15 +123,17 @@ public class Prologue extends AppCompatActivity {
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
-            @SuppressLint("SetTextI18n")
+            @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
             @Override
             public void run() {
                 if (dialogueIndex < dialogues.length) {
                     if (dialogueIndex == 7) {
                         setBackground(R.drawable.velanimas_entrada);
+                        map.setBackground(getResources().getDrawable(R.drawable.mapa_2));
                     }
                     if (dialogueIndex == 10) {
                         setBackground(R.drawable.casa_exterior);
+                        map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                     }
                     if (dialogueIndex == 15 || dialogueIndex == 85) {
                         setBackground(R.drawable.sala_estar);
@@ -190,6 +192,10 @@ public class Prologue extends AppCompatActivity {
                     if (dialogueIndex == 98){
                         object.setVisibility(View.INVISIBLE);
                     }
+                    if (dialogueIndex == 106){
+                        setBackground(R.drawable.bosque);
+                        map.setBackground(getResources().getDrawable(R.drawable.mapa_4));
+                    }
 
                     String fullText = dialogues[dialogueIndex];
                     if (charIndex <= fullText.length()) {
@@ -201,19 +207,25 @@ public class Prologue extends AppCompatActivity {
                         charIndex = 0;
                         dialogueIndex++;
                         animationRunning = false;
-                        if (dialogueIndex < dialogues.length && dialogueIndex != 24 && dialogueIndex != 52) {
-                            changeDialogueButton.setVisibility(View.VISIBLE);
-                        } else {
+                        if (dialogueIndex == 108) {
+                            combatButton.setVisibility(View.VISIBLE);
                             changeDialogueButton.setVisibility(View.INVISIBLE);
-                            if (dialogueIndex == 24) {
-                                option1Button.setVisibility(View.VISIBLE);
-                                option2Button.setVisibility(View.VISIBLE);
-                            }
-                            if (dialogueIndex == 52){
-                                option1Button.setVisibility(View.VISIBLE);
-                                option2Button.setVisibility(View.VISIBLE);
-                                option1Button.setText("Saludar a Luis");
-                                option2Button.setText("Ir a mi habitación");
+                        } else {
+                            if (dialogueIndex < dialogues.length && dialogueIndex != 24 && dialogueIndex != 52) {
+                                changeDialogueButton.setVisibility(View.VISIBLE);
+                            } else {
+                                changeDialogueButton.setVisibility(View.INVISIBLE);
+
+                                if (dialogueIndex == 24) {
+                                    option1Button.setVisibility(View.VISIBLE);
+                                    option2Button.setVisibility(View.VISIBLE);
+                                }
+                                if (dialogueIndex == 52) {
+                                    option1Button.setVisibility(View.VISIBLE);
+                                    option2Button.setVisibility(View.VISIBLE);
+                                    option1Button.setText("Saludar a Luis");
+                                    option2Button.setText("Ir a mi habitación");
+                                }
                             }
                         }
                     }
@@ -290,6 +302,7 @@ public class Prologue extends AppCompatActivity {
                         exitGameButton.setVisibility(View.INVISIBLE);
                         inventoryButton.setVisibility(View.INVISIBLE);
                         mapButton.setVisibility(View.INVISIBLE);
+                        map.setVisibility(View.INVISIBLE);
                         changeDialogueButton.setClickable(true);
                         option1Button.setClickable(true);
                         option2Button.setClickable(true);
@@ -303,6 +316,8 @@ public class Prologue extends AppCompatActivity {
                         saveButton.setVisibility(View.INVISIBLE);
                         exitGameButton.setVisibility(View.INVISIBLE);
                         exitButton.setVisibility(View.INVISIBLE);
+                        mapButton.setVisibility(View.INVISIBLE);
+                        map.setVisibility(View.INVISIBLE);
                         changeDialogueButton.setClickable(false);
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
@@ -315,11 +330,20 @@ public class Prologue extends AppCompatActivity {
                         statsMenu.setVisibility(View.VISIBLE);
                         saveButton.setVisibility(View.VISIBLE);
                         exitGameButton.setVisibility(View.VISIBLE);
+                        mapButton.setVisibility(View.VISIBLE);
                         changeDialogueButton.setClickable(false);
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
                         menuButton.setClickable(true);
-                    });mapButton.setOnClickListener(v -> map.setVisibility(ImageView.VISIBLE));
+                    });
+                    mapButton.setOnClickListener(v -> map.setVisibility(ImageView.VISIBLE));
+
+                    combatButton.setOnClickListener(v -> {
+                        if (dialogueIndex == 108) {
+                            Intent intent = new Intent(Prologue.this, Prologue_Combat1.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         }, delayMillis);
@@ -331,36 +355,48 @@ public class Prologue extends AppCompatActivity {
         backgroundImageView.setImageDrawable(drawable);
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
     private void setBackgroundForDialogue(int dialogueIndex) {
         switch (dialogueIndex) {
-            case 8, 9, 10 -> setBackground(R.drawable.velanimas_entrada);
-            case 11, 12, 13, 14, 15 -> setBackground(R.drawable.casa_exterior);
+            case 8, 9, 10 -> {
+                setBackground(R.drawable.velanimas_entrada);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_2));
+            }
+            case 11, 12, 13, 14, 15 -> {
+                setBackground(R.drawable.casa_exterior);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
+            }
             case 16, 17, 18, 19, 20, 21, 22, 23, 86, 87, 88, 89, 90, 91, 92 -> {
                 setBackground(R.drawable.sala_estar);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite1.setVisibility(View.VISIBLE);
             }
             case 24 -> {
                 setBackground(R.drawable.habitaciones);
                 sprite1.setVisibility(View.INVISIBLE);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 option1Button.setText("Luis");
                 option2Button.setText("María");
             }
             case 26, 27, 28, 29, 41, 42, 43, 44 -> {
                 setBackground(R.drawable.habitaciones);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite2.setVisibility(View.INVISIBLE);
                 sprite3.setVisibility(View.INVISIBLE);
             }
             case 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 -> {
                 setBackground(R.drawable.habitacion_luis);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite2.setVisibility(View.VISIBLE);
             }
             case 45, 46, 47, 48, 49, 50, 51, 52, 56, 57 -> {
                 setBackground(R.drawable.habitacion_maria);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite3.setVisibility(View.VISIBLE);
             }
             case 58, 59, 60, 61, 62, 63 -> {
                 setBackground(R.drawable.habitacion_invitado);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite2.setVisibility(View.INVISIBLE);
                 sprite3.setVisibility(View.VISIBLE);
             }
@@ -369,26 +405,51 @@ public class Prologue extends AppCompatActivity {
                 setBackground(R.drawable.darkness);
                 screen.setVisibility(View.VISIBLE);
                 sprite3.setVisibility(View.INVISIBLE);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 new Handler().postDelayed(() -> screen.setVisibility(View.INVISIBLE), screenVisibleTimeMillis);
             }
             case 65, 66, 67, 68 -> {
                 setBackground(R.drawable.darkness);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite3.setVisibility(View.INVISIBLE);
             }
-            case 69, 70 -> setBackground(R.drawable.luz);
-            case 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 -> setBackground(R.drawable.luz_cerca);
-            case 84, 85 -> setBackground(R.drawable.habitacion_invitado);
+            case 69, 70 -> {
+                setBackground(R.drawable.luz);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
+            }
+            case 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 -> {
+                setBackground(R.drawable.luz_cerca);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
+            }
+            case 84, 85 -> {
+                setBackground(R.drawable.habitacion_invitado);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
+            }
             case 93, 94, 95, 96 -> {
                 setBackground(R.drawable.cocina);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite2.setVisibility(View.VISIBLE);
             }
-            case 97, 99, 100, 101, 102, 103, 104 -> {
+            case 97, 99, 100, 101, 102, 103, 104, 105, 106 -> {
                 setBackground(R.drawable.jardin);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
                 sprite2.setVisibility(View.VISIBLE);
             }
-            case 98 -> object.setVisibility(View.VISIBLE);
+            case 98 -> {
+                object.setVisibility(View.VISIBLE);
+                sprite2.setVisibility(View.VISIBLE);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_3));
+            }
+            case 107, 108 -> {
+                setBackground(R.drawable.bosque);
+                sprite2.setVisibility(View.VISIBLE);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_4));
+            }
 
-            default -> setBackground(R.drawable.coche);
+            default -> {
+                setBackground(R.drawable.coche);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_yurei));
+            }
         }
     }
 

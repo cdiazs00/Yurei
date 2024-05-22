@@ -69,6 +69,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="@id/blueView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/blueView"
+        tools:ignore="HardcodedText,KeyboardInaccessibleWidget,TextContrastCheck,DuplicateSpeakableTextCheck,DuplicateClickableBoundsCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_combat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:text="Siguiente"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
@@ -107,7 +119,7 @@
         android:text="Menú"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+        tools:ignore="HardcodedText,TextContrastCheck,DuplicateClickableBoundsCheck" />
 
     <View
         android:id="@id/objeto"
@@ -138,10 +150,12 @@
 
     <ImageView
         android:id="@+id/map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="525dp"
+        android:layout_height="300dp"
         android:background="@drawable/mapa_yurei"
         android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="@id/menu"
+        app:layout_constraintBottom_toBottomOf="@id/menu"
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
 
     <View
