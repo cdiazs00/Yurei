@@ -20,15 +20,15 @@ import java.util.List;
 
 public class Prologue_Combat1 extends AppCompatActivity {
 
-    private View ally1, ally2, ally3, MagicMenu;
+    private View ally1, MagicMenu, ItemMenu;
     private AnimatedImageDrawable animationDrawable;
-    private int spriteTurn = 1;
-    ImageView gif1, gif2, gif3;
+    ImageView gif1, fireball_gif, explosion_gif, enemy_marker1;
     private List<Allies> AllyList;
     private List<Enemies> EnemyList;
-    private TextView ally_stats;
-    private TextView enemy_stats;
+    private TextView ally_stats, enemy_stats, Dialogues;
     private Enemies selectedEnemy;
+    private boolean isFireballSelected = false;
+    private Handler dialogueHandler;
 
     @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -38,23 +38,20 @@ public class Prologue_Combat1 extends AppCompatActivity {
         setContentView(R.layout.prologue_combat1);
 
         ally1 = findViewById(R.id.ally1);
-        ally2 = findViewById(R.id.ally2);
-        ally3 = findViewById(R.id.ally3);
-
         MagicMenu = findViewById(R.id.magicmenu);
-
+        ItemMenu = findViewById(R.id.itemmenu);
+        Dialogues = findViewById(R.id.dialogues);
         gif1 = findViewById(R.id.gif1);
-        gif2 = findViewById(R.id.gif2);
-        gif3 = findViewById(R.id.gif3);
+        fireball_gif = findViewById(R.id.fireball_gif);
+        explosion_gif = findViewById(R.id.explosion_gif);
+        enemy_marker1 = findViewById(R.id.enemy_marker1);
+        enemy_marker1.setVisibility(View.INVISIBLE);
 
         Button attackButton = findViewById(R.id.attack);
         Button magicButton = findViewById(R.id.magic);
+        Button fireballButton = findViewById(R.id.fireball);
         Button itemButton = findViewById(R.id.item);
-        Button ultimateButton = findViewById(R.id.ultimate);
-
         Button enemyButton1 = findViewById(R.id.enemy_button1);
-        Button enemyButton2 = findViewById(R.id.enemy_button2);
-        Button enemyButton3 = findViewById(R.id.enemy_button3);
 
         ally_stats = findViewById(R.id.ally_stats);
         enemy_stats = findViewById(R.id.enemy_stats);
@@ -62,60 +59,84 @@ public class Prologue_Combat1 extends AppCompatActivity {
         AllyList = new ArrayList<>();
         EnemyList = new ArrayList<>();
 
-        List<String> skillsSombra = new ArrayList<>();
-        skillsSombra.add("Zarpazo");
-        List<String> skillsHechicero = new ArrayList<>();
-        skillsHechicero.add("Bola de fuego");
-        skillsHechicero.add("Rayo");
+        List<String> skillsLuis = new ArrayList<>();
+        skillsLuis.add("Zarpazo");
 
-        AllyList.add(new Allies("Sora", 100, 75, 10, 5));
-        AllyList.add(new Allies("Cloud", 150, 60, 15, 7));
-        AllyList.add(new Allies("Sephiroth", 200, 100, 20, 10));
-
-        EnemyList.add(new Enemies("Sombra", 50, skillsSombra));
-        EnemyList.add(new Enemies("Hechicero", 100, skillsHechicero));
-        EnemyList.add(new Enemies("Sombra", 50, skillsSombra));
+        AllyList.add(new Allies("Cristina", 100, 75, 10, 5));
+        EnemyList.add(new Enemies("Luis", 50, skillsLuis));
 
         displayAllyStats();
         displayEnemyStats();
 
+        setupDialogueSequence();
+
         attackButton.setOnClickListener(v -> {
             enemyButton1.setVisibility(View.VISIBLE);
-            enemyButton2.setVisibility(View.VISIBLE);
-            enemyButton3.setVisibility(View.VISIBLE);
+            enemy_marker1.setVisibility(View.VISIBLE);
             MagicMenu.setVisibility(View.INVISIBLE);
+            ItemMenu.setVisibility(View.INVISIBLE);
+            isFireballSelected = false;
         });
 
         magicButton.setOnClickListener(v -> {
             enemyButton1.setVisibility(View.INVISIBLE);
-            enemyButton2.setVisibility(View.INVISIBLE);
-            enemyButton3.setVisibility(View.INVISIBLE);
+            enemy_marker1.setVisibility(View.INVISIBLE);
             MagicMenu.setVisibility(View.VISIBLE);
+            ItemMenu.setVisibility(View.INVISIBLE);
+            isFireballSelected = false;
+        });
+
+        fireballButton.setOnClickListener(v -> {
+            enemyButton1.setVisibility(View.VISIBLE);
+            enemy_marker1.setVisibility(View.VISIBLE);
+            isFireballSelected = true;
+        });
+
+        itemButton.setOnClickListener(v -> {
+            enemyButton1.setVisibility(View.INVISIBLE);
+            enemy_marker1.setVisibility(View.INVISIBLE);
+            MagicMenu.setVisibility(View.INVISIBLE);
+            ItemMenu.setVisibility(View.VISIBLE);
+            isFireballSelected = false;
         });
 
         enemyButton1.setOnClickListener(v -> {
             selectedEnemy = EnemyList.get(0);
-            animateSprites(0);
+            if (isFireballSelected) {
+                animateFireball();
+            } else {
+                animateSprites();
+            }
             enemyButton1.setVisibility(View.INVISIBLE);
-            enemyButton2.setVisibility(View.INVISIBLE);
-            enemyButton3.setVisibility(View.INVISIBLE);
+            MagicMenu.setVisibility(View.INVISIBLE);
+            enemy_marker1.setVisibility(View.INVISIBLE);
         });
+    }
 
-        enemyButton2.setOnClickListener(v -> {
-            selectedEnemy = EnemyList.get(1);
-            animateSprites(1);
-            enemyButton1.setVisibility(View.INVISIBLE);
-            enemyButton2.setVisibility(View.INVISIBLE);
-            enemyButton3.setVisibility(View.INVISIBLE);
-        });
+    private void setupDialogueSequence() {
+        dialogueHandler = new Handler(Looper.getMainLooper());
+        final String[] dialogueLines = {
+                "Muy bien, empecemos por lo básico.",
+                "Realiza un ATAQUE básico cuerpo a cuerpo.",
+                "No está mal, ahora veamos como está tu MAGIA"
+        };
 
-        enemyButton3.setOnClickListener(v -> {
-            selectedEnemy = EnemyList.get(2);
-            animateSprites(2);
-            enemyButton1.setVisibility(View.INVISIBLE);
-            enemyButton2.setVisibility(View.INVISIBLE);
-            enemyButton3.setVisibility(View.INVISIBLE);
-        });
+        Runnable dialogueRunnable = new Runnable() {
+            int currentLineIndex = 0;
+
+            @Override
+            public void run() {
+                if (currentLineIndex < dialogueLines.length) {
+                    Dialogues.setText(dialogueLines[currentLineIndex]);
+                    currentLineIndex++;
+                    dialogueHandler.postDelayed(this, 5000);
+                } else {
+                    Dialogues.setVisibility(View.INVISIBLE);
+                }
+            }
+        };
+
+        dialogueHandler.post(dialogueRunnable);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -141,41 +162,33 @@ public class Prologue_Combat1 extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    private void animateSprites(int selectedOptionIndex) {
-        View selectedOption = null;
-        ImageView selectedOptionGif = null;
+    private void animateSprites() {
+        View selectedOption = findViewById(R.id.enemy1);
+        ImageView selectedOptionGif = gif1;
 
-        switch (selectedOptionIndex) {
-            case 0:
-                selectedOption = findViewById(R.id.enemy1);
-                selectedOptionGif = gif1;
-                break;
-            case 1:
-                selectedOption = findViewById(R.id.enemy2);
-                selectedOptionGif = gif2;
-                break;
-            case 2:
-                selectedOption = findViewById(R.id.enemy3);
-                selectedOptionGif = gif3;
-                break;
+        if (selectedOption != null && selectedOptionGif != null) {
+            ally1.setBackgroundResource(R.drawable.sora2);
+            GifCoordinates(ally1, selectedOption, selectedOptionGif);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    private void animateFireball() {
+        View selectedOption = findViewById(R.id.enemy1);
+        ImageView selectedOptionGif = fireball_gif;
+
+        Allies ally = AllyList.get(0);
+        int fireballCost = 10;
+        if (ally.getPM() >= fireballCost) {
+            ally.setPM(ally.getPM() - fireballCost);
+            displayAllyStats();
+        } else {
+            return;
         }
 
         if (selectedOption != null && selectedOptionGif != null) {
-            switch (spriteTurn) {
-                case 1:
-                    ally1.setBackgroundResource(R.drawable.sora2);
-                    GifCoordinates(ally1, selectedOption, selectedOptionGif);
-                    break;
-                case 2:
-                    ally2.setBackgroundResource(R.drawable.sora2);
-                    GifCoordinates(ally2, selectedOption, selectedOptionGif);
-                    break;
-                case 3:
-                    ally3.setBackgroundResource(R.drawable.sora2);
-                    GifCoordinates(ally3, selectedOption, selectedOptionGif);
-                    break;
-            }
-            spriteTurn = (spriteTurn % 3) + 1;
+            fireball_gif.setVisibility(View.VISIBLE);
+            GifCoordinates(fireball_gif, selectedOption, selectedOptionGif);
         }
     }
 
@@ -206,76 +219,75 @@ public class Prologue_Combat1 extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                applyDamageToEnemy(selectedEnemy);
-                switch (spriteTurn) {
-                    case 1:
-                        ally1.setBackgroundResource(R.drawable.sora);
-                        ally2.setBackgroundResource(R.drawable.cloud);
-                        ally3.setBackgroundResource(R.drawable.sephiroth);
-                        break;
-                    case 2:
-                        ally1.setBackgroundResource(R.drawable.sora);
-                        ally2.setBackgroundResource(R.drawable.cloud);
-                        ally3.setBackgroundResource(R.drawable.sephiroth);
-                        break;
-                    case 3:
-                        ally1.setBackgroundResource(R.drawable.sora);
-                        ally2.setBackgroundResource(R.drawable.cloud);
-                        ally3.setBackgroundResource(R.drawable.sephiroth);
-                        break;
+                if (isFireballSelected) {
+                    applyFireballDamageToEnemy(selectedEnemy);
+                    gif.setVisibility(View.INVISIBLE);
+                } else {
+                    applyDamageToEnemy(selectedEnemy);
+                    ally1.setBackgroundResource(R.drawable.sora);
                 }
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {}
         });
-
         sprite.startAnimation(animationSet);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void showGif(ImageView gifImageView) {
         gifImageView.setVisibility(View.VISIBLE);
-        gifImageView.setImageResource(R.drawable.sword_slash);
+        gifImageView.setImageResource(isFireballSelected ? R.drawable.fireball : R.drawable.sword_slash);
+
+        if (isFireballSelected) {
+            gifImageView.setImageResource(R.drawable.fireball);
+            Handler handler = new Handler(Looper.getMainLooper());
+
+            handler.postDelayed(() -> {
+                explosion_gif.setVisibility(View.VISIBLE);
+                explosion_gif.setImageResource(R.drawable.explosion);
+
+                handler.postDelayed(() -> explosion_gif.setVisibility(View.INVISIBLE), 1000);
+            }, 500);
+        } else {
+            gifImageView.setImageResource(R.drawable.sword_slash);
+        }
+
         animationDrawable = (AnimatedImageDrawable) gifImageView.getDrawable();
         animationDrawable.start();
 
         Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(() -> hideGif(gifImageView), 500);
+        handler.postDelayed(() -> hideGif(gifImageView), 0);
     }
 
     private void applyDamageToEnemy(Enemies enemy) {
         if (enemy != null) {
-            int attackerATK = 0;
-            switch (spriteTurn) {
-                case 1:
-                    attackerATK = AllyList.get(2).getATK();
-                    break;
-                case 2:
-                    attackerATK = AllyList.get(0).getATK();
-                    break;
-                case 3:
-                    attackerATK = AllyList.get(1).getATK();
-                    break;
-            }
-            int damage = attackerATK;
+            int damage = AllyList.get(0).getATK();
 
             enemy.setPV(enemy.getPV() - damage);
             if (enemy.getPV() <= 0) {
                 enemy.setPV(0);
-                switch (EnemyList.indexOf(enemy)) {
-                    case 0:
-                        findViewById(R.id.enemy1).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.enemy_button1).setEnabled(false);
-                        break;
-                    case 1:
-                        findViewById(R.id.enemy2).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.enemy_button2).setEnabled(false);
-                        break;
-                    case 2:
-                        findViewById(R.id.enemy3).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.enemy_button3).setEnabled(false);
-                        break;
+                if (EnemyList.indexOf(enemy) == 0) {
+                    findViewById(R.id.enemy1).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.enemy_button1).setEnabled(false);
+                }
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                displayEnemyStats();
+            }
+        }
+    }
+
+    private void applyFireballDamageToEnemy(Enemies enemy) {
+        if (enemy != null) {
+            int damage = 20;
+
+            enemy.setPV(enemy.getPV() - damage);
+            if (enemy.getPV() <= 0) {
+                enemy.setPV(0);
+                if (EnemyList.indexOf(enemy) == 0) {
+                    findViewById(R.id.enemy1).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.enemy_button1).setEnabled(false);
                 }
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
