@@ -106,3 +106,42 @@ LUIS: Aún es temprano ¿Que te parece si vamos a practicar un poco?
 CRISTINA: Claro, muestra el camino.
 LUIS: Bueno, hemos llegado: el Bosque de los Ruidos.
 LUIS: Venga, desenfunda tu arma. Veamos de que estás hecha.
+LUIS: No está mal, estás en plena forma.
+MARÍA: Hola ¿Que estáis haciendo?
+CRISTINA: Tu hermano estaba poniendo a prueba mis habilidades.
+MARÍA: Deberíamos ponernos en marcha, llegaremos tarde a la ceremonia de...
+CRISTINA: Esperad ¿Habéis oído eso?
+(Escuchas un sonido que se va acercando)
+CRISTINA: ¿Qué es eso?
+LUIS: Parecen lobos sombras, abundan por esta zona.
+LUIS: ¿Que te parece si ponemos a prueba nuestras habilidades en un combate real?
+MARíA: No, salgamos de aquí, rápido.
+LUIS: La salida está detrás de ellos.
+MARÍA: Yo conozco un atajo.
+LUIS: Cristina ¿tu que opinas?
+"¿Nos enfrentamos a los lobos o salimos por el atajo?"
+
+LUIS: ¡Así me gusta! ¡A por ellos!
+MARIA: Con lo fácil que hubiera sido ir por el atajo...
+LUIS: No eran para tanto.
+CRISTINA: Al menos han sido un buen calentamiento.
+LUIS: Ja,ja,ja. Busquemos unos cuantos más.
+MARÍA: Hermano, para. ¡Vamos a llegar tarde!
+LUIS: De acuerdo, pero otro día tenemos que volver.
+CRISTINA: Cuando tu quieras.
+
+MARÍA: Gracias Cristina. Vamos, es por aquí.
+LUIS: Que aburrimiento, me hubiera gustado enfrentarme a ellos.
+CRISTINA: Tenemos prisa Luis, no quiero llegar tarde el primer día.
+(20 minutos después, lográis salir del bosque)
+MARÍA: Mira Cristina, ahí esta la salida.
+"Por fin hemos salido"
+LUIS: María, ¿Dónde nos encontramos?
+MARÍA: Estamos en el Camino Cruzado, ¿Recuerdas que nuestra calle estaba en obras?
+LUIS: Por eso fuimos por el Bosque de los Ruidos, pero creía que las obras llegaban hasta el mirador.
+MARÍA: Pues no, mamá me dijo que cuando salió de compras esa parte ya estaba arreglada. Por eso decidí atajar.
+LUIS: Entiendo.
+CRISTINA: ¿Queda mucho para llegar a la universidad?
+MARíA: Que va, cuando lleguemos al mirador podrás verla.
+LUIS: Venga, pongámonos en marcha.
+MARIA: Ahí a lo lejos está Rannia.

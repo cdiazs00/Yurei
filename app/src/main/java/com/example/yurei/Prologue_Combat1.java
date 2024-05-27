@@ -1,6 +1,7 @@
 package com.example.yurei;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.AnimatedImageDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class Prologue_Combat1 extends AppCompatActivity {
     private Enemies selectedEnemy;
     private boolean isFireballSelected = false;
     private Handler dialogueHandler;
+    private int enemyButtonPressCount = 0;
 
     @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -51,6 +53,7 @@ public class Prologue_Combat1 extends AppCompatActivity {
         Button magicButton = findViewById(R.id.magic);
         Button fireballButton = findViewById(R.id.fireball);
         Button itemButton = findViewById(R.id.item);
+        Button phialButton = findViewById(R.id.phial);
         Button enemyButton1 = findViewById(R.id.enemy_button1);
 
         ally_stats = findViewById(R.id.ally_stats);
@@ -62,7 +65,7 @@ public class Prologue_Combat1 extends AppCompatActivity {
         List<String> skillsLuis = new ArrayList<>();
         skillsLuis.add("Zarpazo");
 
-        AllyList.add(new Allies("Cristina", 100, 75, 10, 5));
+        AllyList.add(new Allies("Cristina", 40, 55, 0, 5));
         EnemyList.add(new Enemies("Luis", 50, skillsLuis));
 
         displayAllyStats();
@@ -100,8 +103,15 @@ public class Prologue_Combat1 extends AppCompatActivity {
             isFireballSelected = false;
         });
 
+        phialButton.setOnClickListener(v -> {
+            showFifthDialogue();
+            ItemMenu.setVisibility(View.INVISIBLE);
+            restorePM();
+        });
+
         enemyButton1.setOnClickListener(v -> {
             selectedEnemy = EnemyList.get(0);
+            enemyButtonPressCount++;
             if (isFireballSelected) {
                 animateFireball();
             } else {
@@ -110,6 +120,11 @@ public class Prologue_Combat1 extends AppCompatActivity {
             enemyButton1.setVisibility(View.INVISIBLE);
             MagicMenu.setVisibility(View.INVISIBLE);
             enemy_marker1.setVisibility(View.INVISIBLE);
+            if (enemyButtonPressCount == 1) {
+                showThirdDialogue();
+            } else if (enemyButtonPressCount == 2) {
+                showFourthDialogue();
+            }
         });
     }
 
@@ -117,8 +132,7 @@ public class Prologue_Combat1 extends AppCompatActivity {
         dialogueHandler = new Handler(Looper.getMainLooper());
         final String[] dialogueLines = {
                 "Muy bien, empecemos por lo básico.",
-                "Realiza un ATAQUE básico cuerpo a cuerpo.",
-                "No está mal, ahora veamos como está tu MAGIA"
+                "Realiza un ATAQUE básico cuerpo a cuerpo."
         };
 
         Runnable dialogueRunnable = new Runnable() {
@@ -137,6 +151,35 @@ public class Prologue_Combat1 extends AppCompatActivity {
         };
 
         dialogueHandler.post(dialogueRunnable);
+    }
+
+    private void showThirdDialogue() {
+        final String thirdDialogueLine = "No está mal, ahora veamos cómo está tu MAGIA.";
+        Dialogues.setVisibility(View.VISIBLE);
+        Dialogues.setText(thirdDialogueLine);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> Dialogues.setVisibility(View.INVISIBLE), 5000);
+    }
+
+    private void showFourthDialogue() {
+        final String fourthDialogueLine = "Muy bien, ahora bebe del VIAL y recupera tus PM.";
+        Dialogues.setVisibility(View.VISIBLE);
+        Dialogues.setText(fourthDialogueLine);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> Dialogues.setVisibility(View.INVISIBLE), 5000);
+    }
+
+    private void showFifthDialogue() {
+        final String fifthDialogueLine = "Muy bien, dejémoslo por ahora";
+        Dialogues.setVisibility(View.VISIBLE);
+        Dialogues.setText(fifthDialogueLine);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> {
+            Dialogues.setVisibility(View.INVISIBLE);
+            Intent intent = new Intent(Prologue_Combat1.this, Prologue.class);
+            startActivity(intent);
+            finish();
+        }, 5000);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -189,6 +232,16 @@ public class Prologue_Combat1 extends AppCompatActivity {
         if (selectedOption != null && selectedOptionGif != null) {
             fireball_gif.setVisibility(View.VISIBLE);
             GifCoordinates(fireball_gif, selectedOption, selectedOptionGif);
+        }
+    }
+
+    private void restorePM() {
+        int pmToRestore = 10;
+        for (Allies ally : AllyList) {
+            ally.setPM(ally.getPM() + pmToRestore);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            displayAllyStats();
         }
     }
 
@@ -280,7 +333,7 @@ public class Prologue_Combat1 extends AppCompatActivity {
 
     private void applyFireballDamageToEnemy(Enemies enemy) {
         if (enemy != null) {
-            int damage = 20;
+            int damage = 0;
 
             enemy.setPV(enemy.getPV() - damage);
             if (enemy.getPV() <= 0) {

@@ -26,21 +26,21 @@
 
     <View
         android:id="@+id/luis"
-        android:layout_width="50dp"
+        android:layout_width="200dp"
         android:layout_height="300dp"
-        android:background="#ae00ed"
+        android:background="@drawable/luis"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_option1"
+        app:layout_constraintEnd_toStartOf="@id/maria"
         tools:ignore="MissingConstraints" />
 
     <View
         android:id="@+id/maria"
-        android:layout_width="50dp"
-        android:layout_height="300dp"
-        android:background="#ae00ed"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/maria"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/luis"
         app:layout_constraintEnd_toStartOf="@id/button_option1"
         tools:ignore="MissingConstraints" />
 
@@ -140,12 +140,23 @@
         tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/stats_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estadísticas"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/map_button"
+        app:layout_constraintBottom_toTopOf="@+id/stats_menu"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/map_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mapa"
         app:layout_constraintBottom_toTopOf="@+id/stats_menu"
         app:layout_constraintStart_toStartOf="@+id/stats_menu"
+        app:layout_constraintEnd_toStartOf="@id/stats_button"
         tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
 
     <ImageView
@@ -162,7 +173,7 @@
         android:id="@id/stats_menu"
         android:layout_width="525dp"
         android:layout_height="300dp"
-        android:background="#9005e4fc"
+        android:background="@drawable/cristina_stats"
         android:elevation="2dp"
         app:layout_constraintEnd_toEndOf="@id/menu"
         app:layout_constraintBottom_toBottomOf="@id/menu"
@@ -247,5 +258,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="DuplicateClickableBoundsCheck,HardcodedText,KeyboardInaccessibleWidget,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/reputation"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:background="#05e4fc"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <TextView
+        android:id="@id/affinity_luis"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@color/transparent"
+        android:elevation="3dp"
+        android:text="Afinidad = 0"
+        android:textColor="#ff039e"
+        app:layout_constraintEnd_toEndOf="@id/stats_menu"
+        app:layout_constraintTop_toTopOf="@id/stats_menu"
+        tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
+
+    <TextView
+        android:id="@id/affinity_maria"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@color/transparent"
+        android:elevation="3dp"
+        android:text="Afinidad = 0"
+        android:textColor="#ff039e"
+        app:layout_constraintEnd_toEndOf="@id/stats_menu"
+        app:layout_constraintTop_toTopOf="@id/stats_menu"
+        tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⬅️"
+        android:textSize="20sp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/right_button"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="➡️"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

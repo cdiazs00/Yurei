@@ -7,4 +7,7 @@
     <item name="stats_menu" type="id" />
     <item name="transition" type="id" />
     <item name="objeto" type="id" />
+    <item name="reputation_stats" type="id" />
+    <item name="affinity_luis" type="id" />
+    <item name="affinity_maria" type="id" />
 </resources>
