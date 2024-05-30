@@ -18,7 +18,7 @@
         android:id="@+id/sra_hernandez"
         android:layout_width="50dp"
         android:layout_height="300dp"
-        android:background="#ae00ed"
+        android:background="@drawable/sra_hernandez"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button_option1"
@@ -45,11 +45,21 @@
         tools:ignore="MissingConstraints" />
 
     <View
+        android:id="@+id/faragonda"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/faragonda"
+        app:layout_constraintBottom_toBottomOf="@id/blueView"
+        app:layout_constraintStart_toEndOf="@id/luis"
+        app:layout_constraintEnd_toStartOf="@id/button_option1"
+        tools:ignore="MissingConstraints" />
+
+    <View
         android:id="@+id/blueView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#7005e4fc"
+        android:background="@drawable/cuadro_dialogos"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -60,6 +70,9 @@
         android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/blueView"
         app:layout_constraintTop_toTopOf="@+id/blueView"
         tools:ignore="HardcodedText,MissingConstraints,VisualLintBounds,TextContrastCheck" />
@@ -135,7 +148,7 @@
         android:id="@id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#90d6a51e"
+        android:background="@drawable/pausa"
         android:elevation="2dp"
         tools:ignore="MissingConstraints" />
 
@@ -246,6 +259,19 @@
         app:layout_constraintEnd_toStartOf="@id/stats_menu"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText,SpeakableTextPresentCheck,TextContrastCheck" />
+
+    <TextView
+        android:id="@id/inventory"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:elevation="2dp"
+        android:text="Espada básica"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_exit_inventory"
+        tools:ignore="HardcodedText,SpUsage,TextSizeCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_exit_inventory"

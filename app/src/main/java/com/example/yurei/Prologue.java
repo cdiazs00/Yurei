@@ -34,8 +34,8 @@ public class Prologue extends AppCompatActivity {
     private Button option1Button, option2Button, changeDialogueButton, menuButton, exitButton, saveButton, exitGameButton, inventoryButton,
             exitInventoryButton, mapButton, statsButton, leftButton, rightButton, combatButton;
     private ImageView backgroundImageView, map;
-    private View sprite1, sprite2, sprite3, menu, statsMenu, object;
-    private TextView reputation, affinity_luis, affinity_maria;
+    private View sprite1, sprite2, sprite3, sprite4, menu, statsMenu, object;
+    private TextView inventory, reputation, affinity_luis, affinity_maria;
     private int Counter = 0;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -64,9 +64,11 @@ public class Prologue extends AppCompatActivity {
         sprite1 = findViewById(R.id.sra_hernandez);
         sprite2 = findViewById(R.id.luis);
         sprite3 = findViewById(R.id.maria);
+        sprite4 = findViewById(R.id.faragonda);
         menu = findViewById(R.id.menu);
         statsMenu = findViewById(R.id.stats_menu);
         object = findViewById(R.id.objeto);
+        inventory = findViewById(R.id.inventory);
         reputation = findViewById(R.id.reputation);
         affinity_luis = findViewById(R.id.affinity_luis);
         affinity_maria = findViewById(R.id.affinity_maria);
@@ -89,9 +91,11 @@ public class Prologue extends AppCompatActivity {
         sprite1.setVisibility(View.INVISIBLE);
         sprite2.setVisibility(View.INVISIBLE);
         sprite3.setVisibility(View.INVISIBLE);
+        sprite4.setVisibility(View.INVISIBLE);
         menu.setVisibility(View.INVISIBLE);
         statsMenu.setVisibility(View.INVISIBLE);
         object.setVisibility(View.INVISIBLE);
+        inventory.setVisibility(View.INVISIBLE);
         reputation.setVisibility(View.INVISIBLE);
         affinity_luis.setVisibility(View.INVISIBLE);
         affinity_maria.setVisibility(View.INVISIBLE);
@@ -220,6 +224,30 @@ public class Prologue extends AppCompatActivity {
                         setBackground(R.drawable.cruce);
                         map.setBackground(getResources().getDrawable(R.drawable.mapa_5));
                     }
+                    if (dialogueIndex == 147){
+                        setBackground(R.drawable.mirador);
+                        map.setBackground(getResources().getDrawable(R.drawable.mapa_6));
+                    }
+                    if (dialogueIndex == 153) {
+                        changeDialogueButton.setOnClickListener(v -> {
+                            changeDialogueButton.setVisibility(View.INVISIBLE);
+                            dialogueIndex++;
+                            animateText();
+                        });
+                    }
+                    if (dialogueIndex == 155){
+                        setBackground(R.drawable.rannia);
+                        map.setBackground(getResources().getDrawable(R.drawable.mapa_rannia));
+                    }
+                    if (dialogueIndex == 159){
+                        setBackground(R.drawable.pasillo);
+                        sprite2.setVisibility(View.INVISIBLE);
+                        sprite3.setVisibility(View.INVISIBLE);
+                    }
+                    if (dialogueIndex == 161){
+                        setBackground(R.drawable.despacho);
+                        sprite4.setVisibility(View.VISIBLE);
+                    }
 
                     String fullText = dialogues[dialogueIndex];
                     if (charIndex <= fullText.length()) {
@@ -235,7 +263,8 @@ public class Prologue extends AppCompatActivity {
                             combatButton.setVisibility(View.VISIBLE);
                             changeDialogueButton.setVisibility(View.INVISIBLE);
                         } else {
-                            if (dialogueIndex < dialogues.length && dialogueIndex != 24 && dialogueIndex != 52 && dialogueIndex != 122) {
+                            if (dialogueIndex < dialogues.length && dialogueIndex != 24 && dialogueIndex != 52 && dialogueIndex != 122
+                                    && dialogueIndex != 146 && dialogueIndex != 147 && dialogueIndex != 152) {
                                 changeDialogueButton.setVisibility(View.VISIBLE);
                             } else {
                                 changeDialogueButton.setVisibility(View.INVISIBLE);
@@ -256,6 +285,18 @@ public class Prologue extends AppCompatActivity {
                                     option1Button.setText("Luchar");
                                     option2Button.setText("Escapar");
                                 }
+                                if (dialogueIndex == 146 || dialogueIndex == 147) {
+                                    option1Button.setVisibility(View.VISIBLE);
+                                    option2Button.setVisibility(View.VISIBLE);
+                                    option1Button.setText("Ir al oeste");
+                                    option2Button.setText("Ir al sur");
+                                }
+                                if (dialogueIndex == 152) {
+                                    option1Button.setVisibility(View.VISIBLE);
+                                    option2Button.setVisibility(View.VISIBLE);
+                                    option1Button.setText("Descansar un rato");
+                                    option2Button.setText("Continuar");
+                                }
                             }
                         }
                     }
@@ -275,9 +316,11 @@ public class Prologue extends AppCompatActivity {
                                 animateText();
                             }
                         });
-                    } if (dialogueIndex == 50 && Counter == 1){
+                    }
+                    if (dialogueIndex == 50 && Counter == 1){
                         dialogueIndex = 56;
-                    } if(dialogueIndex == 39 && Counter == 0){
+                    }
+                    if(dialogueIndex == 39 && Counter == 0){
                         dialogueIndex = 55;
                         Counter++;
                     }
@@ -336,6 +379,71 @@ public class Prologue extends AppCompatActivity {
                             }
                         });
                     }
+                    if (dialogueIndex == 146 || dialogueIndex == 147) {
+                        option1Button.setOnClickListener(v -> {
+                            option1Button.setVisibility(View.INVISIBLE);
+                            option2Button.setVisibility(View.INVISIBLE);
+                            dialogueIndex = 147;
+                            Counter++;
+                            animateText();
+                        });
+                        option2Button.setOnClickListener(v -> {
+                            if (!animationRunning) {
+                                option1Button.setVisibility(View.INVISIBLE);
+                                option2Button.setVisibility(View.INVISIBLE);
+                                dialogueIndex = 146;
+                                animateText();
+                            }
+                        });
+                    }
+                    if (dialogueIndex == 151) {
+                        option1Button.setOnClickListener(v -> {
+                            option1Button.setVisibility(View.INVISIBLE);
+                            option2Button.setVisibility(View.INVISIBLE);
+                            dialogueIndex = 153;
+
+                            LuisAffinity += 5;
+                            MariaAffinity -= 5;
+
+                            reputation.setVisibility(View.VISIBLE);
+                            reputation.setText("❤️ Luis +" + LuisAffinity);
+
+                            affinity_luis.setText("Afinidad= " + LuisAffinity);
+                            affinity_maria.setText("Afinidad= " + MariaAffinity);
+
+                            new Handler().postDelayed(() -> {
+                                reputation.setText("\uD83D\uDC94 María " + MariaAffinity);
+
+                                new Handler().postDelayed(() -> reputation.setVisibility(View.INVISIBLE), 5000);
+                            }, 5000);
+
+                            animateText();
+                        });
+                        option2Button.setOnClickListener(v -> {
+                            if (!animationRunning) {
+                                option1Button.setVisibility(View.INVISIBLE);
+                                option2Button.setVisibility(View.INVISIBLE);
+                                dialogueIndex = 154;
+
+                                LuisAffinity -= 5;
+                                MariaAffinity += 5;
+
+                                reputation.setVisibility(View.VISIBLE);
+                                reputation.setText("\uD83D\uDC94 Luis " + LuisAffinity);
+
+                                affinity_luis.setText("Afinidad= " + LuisAffinity);
+                                affinity_maria.setText("Afinidad= " + MariaAffinity);
+
+                                new Handler().postDelayed(() -> {
+                                    reputation.setText("❤️ María +" + MariaAffinity);
+
+                                    new Handler().postDelayed(() -> reputation.setVisibility(View.INVISIBLE), 5000);
+                                }, 5000);
+
+                                animateText();
+                            }
+                        });
+                    }
                     menuButton.setOnClickListener(v -> {
                         menu.setVisibility(View.VISIBLE);
                         statsMenu.setVisibility(View.VISIBLE);
@@ -351,6 +459,16 @@ public class Prologue extends AppCompatActivity {
                         changeDialogueButton.setClickable(false);
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
+                        if (currentStatsBackground == 1) {
+                            affinity_luis.setVisibility(View.VISIBLE);
+                            affinity_maria.setVisibility(View.INVISIBLE);
+                        } else if (currentStatsBackground == 2) {
+                            affinity_luis.setVisibility(View.INVISIBLE);
+                            affinity_maria.setVisibility(View.VISIBLE);
+                        } else {
+                            affinity_luis.setVisibility(View.INVISIBLE);
+                            affinity_maria.setVisibility(View.INVISIBLE);
+                        }
                     });
                     exitButton.setOnClickListener(v -> {
                         menu.setVisibility(View.INVISIBLE);
@@ -369,6 +487,8 @@ public class Prologue extends AppCompatActivity {
                         option1Button.setClickable(true);
                         option2Button.setClickable(true);
                         inventoryButton.setClickable(true);
+                        affinity_luis.setVisibility(View.INVISIBLE);
+                        affinity_maria.setVisibility(View.INVISIBLE);
                     });
                     inventoryButton.setOnClickListener(v -> {
                         inventoryButton.setVisibility(View.INVISIBLE);
@@ -387,6 +507,9 @@ public class Prologue extends AppCompatActivity {
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
                         menuButton.setClickable(false);
+                        inventory.setVisibility(View.VISIBLE);
+                        affinity_luis.setVisibility(View.INVISIBLE);
+                        affinity_maria.setVisibility(View.INVISIBLE);
                     });
                     exitInventoryButton.setOnClickListener(v -> {
                         inventoryButton.setVisibility(View.VISIBLE);
@@ -399,18 +522,42 @@ public class Prologue extends AppCompatActivity {
                         statsButton.setVisibility(View.VISIBLE);
                         leftButton.setVisibility(View.VISIBLE);
                         rightButton.setVisibility(View.VISIBLE);
+                        inventory.setVisibility(View.INVISIBLE);
                         changeDialogueButton.setClickable(false);
                         option1Button.setClickable(false);
                         option2Button.setClickable(false);
                         menuButton.setClickable(true);
+                        if (currentStatsBackground == 1) {
+                            affinity_luis.setVisibility(View.VISIBLE);
+                            affinity_maria.setVisibility(View.INVISIBLE);
+                        } else if (currentStatsBackground == 2) {
+                            affinity_luis.setVisibility(View.INVISIBLE);
+                            affinity_maria.setVisibility(View.VISIBLE);
+                        } else {
+                            affinity_luis.setVisibility(View.INVISIBLE);
+                            affinity_maria.setVisibility(View.INVISIBLE);
+                        }
                     });
                     mapButton.setOnClickListener(v -> {
                         statsMenu.setVisibility(View.INVISIBLE);
                         map.setVisibility(ImageView.VISIBLE);
+                        affinity_luis.setVisibility(View.INVISIBLE);
+                        affinity_maria.setVisibility(View.INVISIBLE);
                     });
                     statsButton.setOnClickListener(v -> {
                         statsMenu.setVisibility(View.VISIBLE);
                         map.setVisibility(ImageView.INVISIBLE);
+
+                        if (currentStatsBackground == 1) {
+                            affinity_luis.setVisibility(View.VISIBLE);
+                            affinity_maria.setVisibility(View.INVISIBLE);
+                        } else if (currentStatsBackground == 2) {
+                            affinity_luis.setVisibility(View.INVISIBLE);
+                            affinity_maria.setVisibility(View.VISIBLE);
+                        } else {
+                            affinity_luis.setVisibility(View.INVISIBLE);
+                            affinity_maria.setVisibility(View.INVISIBLE);
+                        }
                     });
                     leftButton.setOnClickListener(v -> {
                         currentStatsBackground--;
@@ -567,11 +714,23 @@ public class Prologue extends AppCompatActivity {
                 sprite3.setVisibility(View.VISIBLE);
                 map.setBackground(getResources().getDrawable(R.drawable.mapa_4));
             }
-            case 138, 139, 140, 141, 142, 143, 144, 145, 146 -> {
+            case 138, 139, 140, 141, 142, 143, 144, 145, 146, 147 -> {
                 setBackground(R.drawable.cruce);
                 sprite2.setVisibility(View.VISIBLE);
                 sprite3.setVisibility(View.VISIBLE);
                 map.setBackground(getResources().getDrawable(R.drawable.mapa_5));
+            }
+            case 148, 149, 150, 151, 152, 154, 155 -> {
+                setBackground(R.drawable.mirador);
+                sprite2.setVisibility(View.VISIBLE);
+                sprite3.setVisibility(View.VISIBLE);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_6));
+            }
+            case 156 -> {
+                setBackground(R.drawable.rannia);
+                sprite2.setVisibility(View.VISIBLE);
+                sprite3.setVisibility(View.VISIBLE);
+                map.setBackground(getResources().getDrawable(R.drawable.mapa_rannia));
             }
 
             default -> {
@@ -587,6 +746,8 @@ public class Prologue extends AppCompatActivity {
         editor.putInt("dialogueIndex", dialogueIndex);
         editor.putInt("charIndex", charIndex);
         editor.putString("currentDialogue", textView.getText().toString());
+        editor.putInt("MariaAffinity", MariaAffinity);
+        editor.putInt("LuisAffinity", LuisAffinity);
         editor.apply();
         Toast.makeText(this, "Progreso guardado", Toast.LENGTH_SHORT).show();
     }

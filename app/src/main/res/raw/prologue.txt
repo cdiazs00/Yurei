@@ -144,4 +144,28 @@ LUIS: Entiendo.
 CRISTINA: ¿Queda mucho para llegar a la universidad?
 MARíA: Que va, cuando lleguemos al mirador podrás verla.
 LUIS: Venga, pongámonos en marcha.
+MARIA: Por ahí no se va Cristina. Ya habrá tiempo de explorar el pueblo.
 MARIA: Ahí a lo lejos está Rannia.
+Cristina: El edificio allí al fondo?
+Maria: Sí esa es, llegaremos en una media hora.
+Luis: ¿Que os parece si hacemos una pausa y desayunamos algo?
+Maria: Hermano, yo quiero llegar ya ¿Tú que opinas Cristina?
+
+Luis: Pues entonces eso haremos.
+Maria: ¿Ves hermanito? Cristina esta de mi parte.
+(Media hora más tarde)
+Luis: Aquí estamos, bienvenida a Rannia, la única Universidad especial de España.
+Luis: Venga Cristina, vayamos a ver a la directora.
+Cristina: De acuerdo.
+*Toc toc*
+???: Adelante.
+???: Hola Luis, ¿Qué te trae por aquí?
+Luis: Traigo a la nueva estudiante Cristina Garcia, Cristina te presento a Faragonda Alfea, directora de Rannia y una de las magas más poderosas
+del mundo.
+Faragonda: Bienvenida Cristina.
+Cristina: Es un placer estar aquí.
+Faragonda: Luis, María id a clase, ya me ocupo yo a partir de ahora.
+Luis: De acuerdo, nos vemos Cristina, si necesitas ayuda ya sabes donde estoy.
+María: Adiós Cristina.
+Faragonda: Vamos, te haré una visita guiada.
+"Aquí estamos, el comienzo del año académico. ¿Transcurrirá sin problemas u ocurrirán toda clase de emociones? Solo el tiempo lo dirá..."

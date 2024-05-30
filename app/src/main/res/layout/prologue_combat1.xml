@@ -133,9 +133,9 @@
 
     <View
         android:id="@+id/ally1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/sora"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cristina_sprite"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="150dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -212,8 +212,8 @@
     <View
         android:id="@+id/enemy1"
         android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/shadow"
+        android:layout_height="100dp"
+        android:background="@drawable/luis_sprite"
         android:layout_marginTop="100dp"
         android:layout_marginStart="150dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -233,7 +233,7 @@
     <Button
         android:id="@id/enemy_button1"
         android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:background="@color/transparent"
         android:layout_marginTop="100dp"
         android:layout_marginStart="150dp"
@@ -244,12 +244,12 @@
     <ImageView
         android:id="@+id/gif1"
         android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="150dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toEndOf="@id/borderline"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/fireball_gif"
@@ -265,10 +265,10 @@
         android:id="@+id/explosion_gif"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="100dp"
         android:layout_marginStart="150dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toEndOf="@id/borderline"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

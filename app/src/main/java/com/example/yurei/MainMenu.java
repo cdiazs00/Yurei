@@ -22,11 +22,15 @@ public class MainMenu extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("GameProgress", MODE_PRIVATE);
             int dialogueIndex = sharedPreferences.getInt("dialogueIndex", -1);
             int charIndex = sharedPreferences.getInt("charIndex", -1);
+            int LuisAffinity = sharedPreferences.getInt("LuisAffinity", 0);
+            int MariaAffinity = sharedPreferences.getInt("MariaAffinity", 0);
 
             if (dialogueIndex != -1 && charIndex != -1) {
                 Intent intent = new Intent(this, Prologue.class);
                 intent.putExtra("dialogueIndex", dialogueIndex - 1);
                 intent.putExtra("charIndex", charIndex);
+                intent.putExtra("LuisAffinity", LuisAffinity);
+                intent.putExtra("MariaAffinity", MariaAffinity);
                 startActivity(intent);
             } else {
                 Toast.makeText(this, "No hay datos guardados", Toast.LENGTH_SHORT).show();
