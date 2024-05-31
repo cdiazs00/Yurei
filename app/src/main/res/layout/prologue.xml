@@ -68,7 +68,7 @@
         android:layout_height="100dp"
         android:text="Diálogo 1"
         android:textColor="@color/black"
-        android:textSize="23sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
