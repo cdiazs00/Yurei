@@ -29,6 +29,7 @@
         android:background="@drawable/menu_batalla"
         android:textColor="#ffffff"
         android:textSize="22sp"
+        android:layout_marginStart="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/battlemenu"
         app:layout_constraintEnd_toStartOf="@id/enemy_stats"
         app:layout_constraintStart_toEndOf="@id/opciones"

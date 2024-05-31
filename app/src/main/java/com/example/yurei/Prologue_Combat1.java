@@ -210,7 +210,6 @@ public class Prologue_Combat1 extends AppCompatActivity {
         ImageView selectedOptionGif = gif1;
 
         if (selectedOption != null && selectedOptionGif != null) {
-            ally1.setBackgroundResource(R.drawable.sora2);
             GifCoordinates(ally1, selectedOption, selectedOptionGif);
         }
     }
@@ -277,7 +276,6 @@ public class Prologue_Combat1 extends AppCompatActivity {
                     gif.setVisibility(View.INVISIBLE);
                 } else {
                     applyDamageToEnemy(selectedEnemy);
-                    ally1.setBackgroundResource(R.drawable.sora);
                 }
             }
 

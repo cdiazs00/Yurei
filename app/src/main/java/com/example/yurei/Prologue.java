@@ -36,6 +36,7 @@ public class Prologue extends AppCompatActivity {
     private ImageView backgroundImageView, map;
     private View sprite1, sprite2, sprite3, sprite4, menu, statsMenu, object;
     private TextView inventory, reputation, affinity_luis, affinity_maria;
+    private String inventoryItems;
     private int Counter = 0;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -72,7 +73,7 @@ public class Prologue extends AppCompatActivity {
         reputation = findViewById(R.id.reputation);
         affinity_luis = findViewById(R.id.affinity_luis);
         affinity_maria = findViewById(R.id.affinity_maria);
-
+        inventoryItems = inventory.getText().toString();
         menuButton.setVisibility(View.VISIBLE);
         option1Button.setVisibility(View.INVISIBLE);
         option2Button.setVisibility(View.INVISIBLE);
@@ -203,12 +204,15 @@ public class Prologue extends AppCompatActivity {
                     if (dialogueIndex == 92){
                         setBackground(R.drawable.cocina);
                         sprite2.setVisibility(View.VISIBLE);
+                        sprite1.setVisibility(View.INVISIBLE);
                     }
                     if (dialogueIndex == 96){
                         setBackground(R.drawable.jardin);
                     }
                     if (dialogueIndex == 97){
                         object.setVisibility(View.VISIBLE);
+                        String addItem = inventoryItems + "\n" + "Vial cristalizado";
+                        inventory.setText(addItem);
                     }
                     if (dialogueIndex == 98){
                         object.setVisibility(View.INVISIBLE);
@@ -216,6 +220,9 @@ public class Prologue extends AppCompatActivity {
                     if (dialogueIndex == 106){
                         setBackground(R.drawable.bosque);
                         map.setBackground(getResources().getDrawable(R.drawable.mapa_4));
+                    }
+                    if (dialogueIndex == 107){
+                        saveGameProgress();
                     }
                     if (dialogueIndex == 109){
                         sprite3.setVisibility(View.VISIBLE);

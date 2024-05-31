@@ -16,7 +16,7 @@
 
     <View
         android:id="@+id/sra_hernandez"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="300dp"
         android:background="@drawable/sra_hernandez"
         app:layout_constraintBottom_toBottomOf="@id/blueView"
@@ -64,7 +64,7 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="650dp"
+        android:layout_width="600dp"
         android:layout_height="100dp"
         android:text="Diálogo 1"
         android:textColor="@color/black"
@@ -175,7 +175,7 @@
     <ImageView
         android:id="@+id/map"
         android:layout_width="525dp"
-        android:layout_height="300dp"
+        android:layout_height="275dp"
         android:background="@drawable/mapa_yurei"
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="@id/menu"
@@ -185,7 +185,7 @@
     <View
         android:id="@id/stats_menu"
         android:layout_width="525dp"
-        android:layout_height="300dp"
+        android:layout_height="275dp"
         android:background="@drawable/cristina_stats"
         android:elevation="2dp"
         app:layout_constraintEnd_toEndOf="@id/menu"

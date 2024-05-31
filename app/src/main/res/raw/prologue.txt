@@ -158,8 +158,8 @@ Luis: Aquí estamos, bienvenida a Rannia, la única Universidad especial de Espa
 Luis: Venga Cristina, vayamos a ver a la directora.
 Cristina: De acuerdo.
 *Toc toc*
-???: Adelante.
-???: Hola Luis, ¿Qué te trae por aquí?
+Directora: Adelante.
+Directora: Hola Luis, ¿Qué te trae por aquí?
 Luis: Traigo a la nueva estudiante Cristina Garcia, Cristina te presento a Faragonda Alfea, directora de Rannia y una de las magas más poderosas
 del mundo.
 Faragonda: Bienvenida Cristina.
